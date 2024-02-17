@@ -1,0 +1,63 @@
+{
+  "name": "cypress-vite",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --port 3000",
+    "cypress": "start-server-and-test dev http://localhost:3000  'cypress open'",
+    "test": "start-server-and-test dev http://localhost:3000 'cypress run'",
+    "test:ci": "cypress run",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "prepare": "husky"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.11.3",
+    "@emotion/styled": "^11.11.0",
+    "@mui/icons-material": "^5.15.10",
+    "@mui/material": "^5.12.2",
+    "@reduxjs/toolkit": "^2.1.0",
+    "@tanstack/react-router": "^1.15.22",
+    "@testing-library/user-event": "^13.5.0",
+    "dotenv": "^16.0.3",
+    "preline": "^2.0.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0",
+    "react-router": "^6.21.3",
+    "react-router-dom": "^6.22.0",
+    "react-toastify": "^10.0.4"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.12.19",
+    "@cypress/vite-plugin-cypress-esm": "^1.1.0",
+    "@tailwindcss/forms": "^0.5.7",
+    "@tanstack/router-devtools": "^1.15.22",
+    "@tanstack/router-vite-plugin": "^1.15.22",
+    "@testing-library/cypress": "^10.0.1",
+    "@types/node": "^20.11.16",
+    "@types/react": "^18.2.15",
+    "@types/react-dom": "^18.2.7",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "@vitejs/plugin-react": "^4.2.1",
+    "cypress": "^13.6.4",
+    "cypress-vite": "^1.5.0",
+    "eslint": "^8.45.0",
+    "eslint-plugin-react-hooks": "^4.6.0",
+    "eslint-plugin-react-refresh": "^0.4.3",
+    "husky": "^9.0.10",
+    "msw": "^2.1.7",
+    "start-server-and-test": "^2.0.3",
+    "tailwindcss": "^3.4.1",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.9",
+    "vite-tsconfig-paths": "^4.3.1"
+  },
+  "msw": {
+    "workerDirectory": [
+      "public"
+    ]
+  }
+}
