@@ -46,7 +46,7 @@ export const  CartProducts: FC = () => {
                 </CardContent>
         
                 <CardActions>
-                <Button size="small" onClick={() => handleAddToCart(product)}>Add to Cart</Button>
+                <Button size="small" onClick={() => handleAddToCart(product as CartItem)}>Add to Cart</Button>
                 </CardActions>
                 </Card>
             ))}

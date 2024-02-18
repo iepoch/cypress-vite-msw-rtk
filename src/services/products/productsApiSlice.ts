@@ -1,9 +1,9 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react"
-import { CartItem } from "./cartSlice";
 
 
 
-export interface Products extends CartItem {
+
+export interface Products {
     id: number;
     title: string;
     price: number;

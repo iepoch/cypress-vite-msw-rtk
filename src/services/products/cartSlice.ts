@@ -1,7 +1,8 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { toast } from "react-toastify";
+import { Products } from "./productsApiSlice";
 
-export interface CartItem {
+export interface CartItem extends Products {
  id: number,
  cartQuantity: number,
  cartPrice: number,
@@ -12,7 +13,7 @@ interface CartItemsState {
     cartItems: CartItem[],
 }
   const initialState: CartItemsState = {
-    cartItems: [] as CartItem[],
+    cartItems: localStorage.getItem('cartItems') ? JSON.parse(localStorage.getItem('cartItems') || '') : [] as CartItem[],
   };
   
   const cartSlice = createSlice({
@@ -33,6 +34,7 @@ interface CartItemsState {
                     position:"bottom-left"
                   })
               }
+              localStorage.setItem('cartQuantity', JSON.stringify(state.cartItems))
         },
         reset: () => (initialState),
     }
