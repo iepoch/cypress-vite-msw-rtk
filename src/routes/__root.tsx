@@ -5,14 +5,14 @@ import { TanStackRouterDevtools } from '@tanstack/router-devtools'
 import ResponsiveAppBar from '../components/Appbar/Appbar'
 import { ToastContainer } from 'react-toastify';
 
-// import { CartDrawer } from '../components/CartProducts/CartDrawer'
+import { CartDrawer } from '../components/CartProducts/CartDrawer'
 export const Route = createRootRoute({
   
   component: () =>(
       <>
       <ToastContainer />
        <ResponsiveAppBar />
-       {/* <CartDrawer /> */}
+       <CartDrawer />
         <Outlet />
         <TanStackRouterDevtools />
       </>

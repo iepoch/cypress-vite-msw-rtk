@@ -34,7 +34,7 @@ interface CartItemsState {
                     position:"bottom-left"
                   })
               }
-              localStorage.setItem('cartQuantity', JSON.stringify(state.cartItems))
+              localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
         },
         reset: () => (initialState),
     }

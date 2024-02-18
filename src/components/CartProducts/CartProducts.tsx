@@ -8,13 +8,16 @@ import { CardMedia, Grid, Rating } from "@mui/material";
 import { useGetProductsQuery } from "../../services/products/productsApiSlice";
 import { useDispatch } from "react-redux";
 import { CartItem, addToCart } from "../../services/products/cartSlice";
+import { createBrowserHistory } from "@tanstack/react-router";
 
 export const  CartProducts: FC = () => {
     const { data = []} = useGetProductsQuery();
     const dispatch = useDispatch()
+    const history = createBrowserHistory()
     
     const handleAddToCart = (product: CartItem) => {
      dispatch(addToCart(product));
+     history.push('/cart');
     }
 
   return (
