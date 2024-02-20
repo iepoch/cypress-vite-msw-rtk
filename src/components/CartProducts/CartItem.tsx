@@ -1,13 +1,14 @@
-import {  CartItem  } from "../../services/products/cartSlice";
-import { Card, CardContent, CardMedia } from "@mui/material";
+import {  CartItem, addToCart  } from "../../services/products/cartSlice";
+import { Button, Card, CardContent, CardMedia } from "@mui/material";
 
 type Props = {
     product: CartItem;
-    addToCart: (clickProduct: CartItem) => void;
+    addToCart: (product: CartItem) => void;
 
 }
 
-export const  CartItems =  ({product }: Props) =>{
+export const  CartItems =  ({ product }: Props) =>{
+    console.log(product)
     return (
         <Card key={product.id + product.rating.count + product.rating.rate} sx={{
             maxWidth: 420,
@@ -19,10 +20,10 @@ export const  CartItems =  ({product }: Props) =>{
                 <h3>{product.title}</h3>
                  <CardMedia component="img"  sx={{ height: 140 }} image={product.image} />
             </CardContent>
-            <CardContent>
+            <CardContent sx={{ display: "flex", justifyContent: 'space-evenly'}}>
                     <p>Price: ${product.price}</p>
-                    <p>Quantity: {product.cartQuantity}</p>
-                    <p>Total: ${(product.price * product.cartQuantity).toFixed(2)}</p>
+                   
+                    <p>Quantity: <Button size="small" onClick={() => addToCart(product)}>+</Button>{product.cartQuantity}<Button sx={{ width: 5, height:35}} >-</Button></p>
                 </CardContent>
         </Card>
     )

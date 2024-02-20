@@ -1,9 +1,13 @@
 import { Drawer } from "@mui/material";
 import { useAppSelector } from "../../app/hooks";
-import { addToCart } from "../../services/products/cartSlice";
+import { addToCart, CartItem } from "../../services/products/cartSlice";
 import { CartItems } from "./CartItem";
 
-export const CartDrawer = () =>{
+type Props ={
+    addToCart: addToCart,
+}
+
+export const CartDrawer = ({addToCart}: Props) =>{
     const cart = useAppSelector((state) => state.cart);
 
     return (
@@ -19,8 +23,10 @@ export const CartDrawer = () =>{
             <h2>Cart</h2>
             {cart.cartItems.length === 0 ? <p> No Items in cart</p> :  null}
             {cart.cartItems.map(product => (
+                <>
                 <CartItems key={product.id} product={product} addToCart={addToCart} />
-
+                <p>Total: ${(product.price * product.cartQuantity).toFixed(2)}</p>
+                </>
             ))} 
             </>
         </Drawer>
