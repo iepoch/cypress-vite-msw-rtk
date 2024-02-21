@@ -1,5 +1,5 @@
-import React from "react";
-import { AppBar, Box, Toolbar, Button } from "@mui/material";
+import React, { SetStateAction, useState } from "react";
+import { AppBar, Box, Toolbar, Button, Badge } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
@@ -10,6 +10,7 @@ import AdbIcon from "@mui/icons-material/Adb";
 import { Link } from "@tanstack/react-router";
 import { dogsApiSlice  } from "../../services/dogs/dogApiSlice";
 import { ShoppingCartCheckoutOutlined } from "@mui/icons-material";
+import { CartDrawer } from "../CartProducts/CartDrawer";
 
 
 const pages_ = [
@@ -40,13 +41,14 @@ const pages_ = [
 ];
 
 const ResponsiveAppBar = () => {
-  const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
+  const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(
     null
   );
-
+  const [showCart, setShowCart]=useState<boolean>(false)
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
+
 
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
@@ -172,7 +174,11 @@ const ResponsiveAppBar = () => {
               );
             })}
           </Box>
-         <ShoppingCartCheckoutOutlined />
+          <Badge>
+
+            <ShoppingCartCheckoutOutlined onClick={() => setShowCart(true)}  />
+            <CartDrawer  open={showCart} onClose={() => setShowCart(false)} />
+          </Badge>
         </Toolbar>
       </Container>
     </AppBar>

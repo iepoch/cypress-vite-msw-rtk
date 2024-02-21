@@ -28,8 +28,7 @@ export const  CartProducts: FC = () => {
 
                 <Card key={product.id + product.rating.count + product.rating.rate} sx={{
                     maxWidth: 320 ,
-                    marginTop:4,
-                    marginBottom:4,
+                    mt:4,
                     backgroundColor: (theme) =>
                     theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
                   }} >

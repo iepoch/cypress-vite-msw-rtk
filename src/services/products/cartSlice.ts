@@ -24,7 +24,7 @@ interface CartItemsState {
            const itemIndex = state.cartItems.findIndex((item )=> item.id === action.payload.id)
               if(itemIndex >= 0){
                 state.cartItems[itemIndex].cartQuantity += 1
-                toast.info('increase quantity', {
+                toast.info(`increase ${state.cartItems[itemIndex].title} cart quantity`, {
                   position:"bottom-left"
                 })
               } else {
@@ -36,10 +36,30 @@ interface CartItemsState {
               }
               localStorage.setItem('cartItems', JSON.stringify(state.cartItems))
         },
+        removeFromCart(state, action: PayloadAction<CartItem>): void {
+            const itemIndex = state.cartItems.findIndex(cartItem => cartItem.id === action.payload.id);
+            if(state.cartItems[itemIndex] .cartQuantity > 1) {
+              state.cartItems[itemIndex].cartQuantity -= 1
+              toast.info(`Decreased ${state.cartItems[itemIndex].title} cart quantity`, {
+                position:"bottom-left"
+              });
+            }
+            else if(state.cartItems[itemIndex].cartQuantity === 1){
+              const clearCartItems = state.cartItems.filter(cartItem => cartItem.id !== action.payload.id);
+
+              state.cartItems = clearCartItems;
+              localStorage.setItem('cartItems', JSON.stringify(state.cartItems));
+              toast.error(`${action.payload.title} has been removed from cart`, {
+                position: "bottom-left",
+              })
+            }
+
+        }, 
+        clearCart() {},
         reset: () => (initialState),
     }
 
   })
 
-  export const { addToCart } = cartSlice.actions
+  export const { addToCart, removeFromCart } = cartSlice.actions
   export default cartSlice.reducer;
