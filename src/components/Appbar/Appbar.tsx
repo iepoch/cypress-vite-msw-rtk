@@ -180,7 +180,7 @@ const ResponsiveAppBar = () => {
           </Box>
           <Badge badgeContent={cart.cartItems.length}  color="secondary">
             <ShoppingCartCheckoutOutlined onClick={() => setShowCart(true)}  />
-            <CartDrawer  open={showCart} onClose={() => setShowCart(false)} />
+            <CartDrawer key={cart.cartItems.length} open={showCart} onClose={() => setShowCart(false)} />
           </Badge>
         </Toolbar>
       </Container>

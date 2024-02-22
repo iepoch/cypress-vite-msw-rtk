@@ -10,7 +10,6 @@ export const Route = createRootRoute({
       <>
       <ToastContainer />
        <ResponsiveAppBar />
-
         <Outlet />
         <TanStackRouterDevtools />
       </>

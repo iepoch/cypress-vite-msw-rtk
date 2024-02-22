@@ -3,10 +3,11 @@ import { createRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { RouterProvider, createRouter } from '@tanstack/react-router'
-
+import { StyledEngineProvider } from '@mui/joy/styles'
 
 // Import the generated route tree
 import { routeTree } from './routeTree.gen'
+
 
 // Create a new router instance
 const router = createRouter({ routeTree })
@@ -34,9 +35,11 @@ const root = createRoot(element!);
 deferRender().then(() =>{
   root.render(
     <StrictMode>
+    <StyledEngineProvider injectFirst>
      <Provider store={ store }>
         <RouterProvider router={ router } />
       </Provider>
+     </StyledEngineProvider>
     </StrictMode>
     )
 })

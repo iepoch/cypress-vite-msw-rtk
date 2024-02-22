@@ -26,7 +26,7 @@ export const CartDrawer = ({ open, onClose}: Props) =>{
             {cart.cartItems.length === 0 ? <p> No Items in cart</p> :  null}
             {cart.cartItems.map(product => (
                <div>
-                <CartItems key={product.id} product={product} />
+                <CartItems key={product.id + product.price + product.rating.count + product.rating.rate} product={product} />
                 <Typography sx={{marginLeft: 40}}>Total: ${(product.price * product.cartQuantity).toFixed(2)}</Typography>
               </div>
             ))} 

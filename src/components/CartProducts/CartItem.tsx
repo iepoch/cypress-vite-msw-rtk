@@ -10,7 +10,7 @@ export const  CartItems =  ({ product }: Props) =>{
     const dispatch = useDispatch()
 
     return (
-        <Card key={product.id + product.rating.count + product.rating.rate} sx={{
+        <Card key={product.id + product.price + product.rating.count + product.rating.rate} sx={{
             maxWidth: 300,
             mt: 4,
             p: 4,

@@ -1,7 +1,6 @@
 import { Dogs }  from './Dogs'
 
 
-
 describe('<Dogs /> Component Testing', () => {
     beforeEach(() => { 
         cy.mountComponent(<Dogs />)
