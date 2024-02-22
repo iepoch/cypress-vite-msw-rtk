@@ -19,9 +19,9 @@ const counterSlice = createSlice({
       state.value++;
     },
     amountAdded(state, action: PayloadAction<number>) {
-       state.value += action.payload;
+      state.value += action.payload;
     },
-    reset: () => (initialState),
+    reset: () => initialState,
     // decrement
     // reset
   },
