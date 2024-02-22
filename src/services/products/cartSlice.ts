@@ -38,7 +38,7 @@ interface CartItemsState {
         },
         removeFromCart(state, action: PayloadAction<CartItem>): void {
             const itemIndex = state.cartItems.findIndex(cartItem => cartItem.id === action.payload.id);
-            if(state.cartItems[itemIndex] .cartQuantity > 1) {
+            if(state.cartItems[itemIndex].cartQuantity > 1) {
               state.cartItems[itemIndex].cartQuantity -= 1
               toast.info(`Decreased ${state.cartItems[itemIndex].title} cart quantity`, {
                 position:"bottom-left"

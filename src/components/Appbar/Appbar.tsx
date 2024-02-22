@@ -1,4 +1,4 @@
-import React, { SetStateAction, useState } from "react";
+import React, { useState } from "react";
 import { AppBar, Box, Toolbar, Button, Badge } from "@mui/material";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
@@ -11,6 +11,7 @@ import { Link } from "@tanstack/react-router";
 import { dogsApiSlice  } from "../../services/dogs/dogApiSlice";
 import { ShoppingCartCheckoutOutlined } from "@mui/icons-material";
 import { CartDrawer } from "../CartProducts/CartDrawer";
+import { useAppSelector } from "../../app/hooks";
 
 
 const pages_ = [
@@ -54,6 +55,9 @@ const ResponsiveAppBar = () => {
     setAnchorElNav(null);
   };
   
+  const cart = useAppSelector((state) => state.cart);
+   
+
   const isLoading = () => {
     dogsApiSlice.usePrefetch('fetchBreeds')
   }
@@ -174,8 +178,7 @@ const ResponsiveAppBar = () => {
               );
             })}
           </Box>
-          <Badge>
-
+          <Badge badgeContent={cart.cartItems.length}  color="secondary">
             <ShoppingCartCheckoutOutlined onClick={() => setShowCart(true)}  />
             <CartDrawer  open={showCart} onClose={() => setShowCart(false)} />
           </Badge>
