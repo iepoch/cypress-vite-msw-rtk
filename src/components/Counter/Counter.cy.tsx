@@ -8,7 +8,7 @@ describe('<Counter /> Component Testing', () => {
     store.dispatch(reset());
   });
   it('Our Current Setup - renders', () => {
-    // see: https://on.cypress.io/mounting-react and vite \
+    // see: https://on.cypress.io/mounting-react and vite 
 
     cy.mountComponent(<Counter />);
     cy.get('[data-testid="counter-button"]').click();
@@ -19,7 +19,7 @@ describe('<Counter /> Component Testing', () => {
   });
 
   it('Simple Setup - RTK', () => {
-    // see: https://on.cypress.io/mounting-react and vite \
+    // see: https://on.cypress.io/mounting-react and vite 
     const component = <Counter />;
     const wrapped = <Provider store={store}>{component}</Provider>;
 

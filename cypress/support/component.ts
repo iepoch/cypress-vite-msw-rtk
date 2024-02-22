@@ -14,36 +14,39 @@
 // ***********************************************************
 
 // Import commands.js using ES2015 syntax:
-import './commands'
+import './commands';
 import { worker } from '../../src/mocks/browser';
 
-import { mount, MountOptions, MountReturn  } from 'cypress/react18'
-import { MemoryRouterProps } from 'react-router-dom'
+import { mount, MountOptions, MountReturn } from 'cypress/react18';
+import { MemoryRouterProps } from 'react-router-dom';
 Cypress.on('test:before:run:async', async () => {
   await worker.start({
-   onUnhandledRequest: 'bypass'
- });
+    onUnhandledRequest: 'bypass',
+  });
 });
 
-Cypress.on('test:after:spec:async', async () =>{
+Cypress.on('test:after:spec:async', async () => {
   await worker.resetHandlers();
- });
- 
-Cypress.on('test:after:run:async', async () =>{
- await worker.stop();
 });
 
-  declare global {
-    // eslint-disable-next-line @typescript-eslint/no-namespace
-    namespace Cypress {
-      interface Chainable {
-             /**
+Cypress.on('test:after:run:async', async () => {
+  await worker.stop();
+});
+
+declare global {
+  // eslint-disable-next-line @typescript-eslint/no-namespace
+  namespace Cypress {
+    interface Chainable {
+      /**
        * Mounts a component with the Theme.
        * @example
        * cy.mountComponent(<TestComponent />);
        */
-      mountComponent: (testComponent: React.ReactNode, options?: MountOptions & { routerProps?: MemoryRouterProps }) => void
-      mountMemoryRouter: (testComponent: React.ReactNode ) => void
+      mountComponent: (
+        testComponent: React.ReactNode,
+        options?: MountOptions & { routerProps?: MemoryRouterProps },
+      ) => void;
+      mountMemoryRouter: (testComponent: React.ReactNode) => void;
       /**
        * Mounts a React node
        * @param component React Node to mount
@@ -51,19 +54,18 @@ Cypress.on('test:after:run:async', async () =>{
        */
       mountWithRedux(
         component: React.ReactNode,
-        options?: MountOptions & { routerProps?: MemoryRouterProps }
-      ): Cypress.Chainable<MountReturn>
+        options?: MountOptions & { routerProps?: MemoryRouterProps },
+      ): Cypress.Chainable<MountReturn>;
       /**
        * Originally mounted
        */
-      mount: typeof mount
-      }
+      mount: typeof mount;
     }
   }
+}
 
 // eslint-disable-next-line no-undef
 Cypress.Commands.add('mount', mount);
-
 
 // Example use:
 // cy.mount(<MyComponent />)

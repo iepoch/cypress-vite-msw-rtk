@@ -19,9 +19,8 @@
 //     }
 // }
 
-
 // Cypress.Commands.add('mount', (component, options) => {
-   
+
 //     const wrapper = <<Provider store={reduxStore}>{component}</Provider>>
 //     return mount(wrapper)
 
