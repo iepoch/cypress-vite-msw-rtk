@@ -11,7 +11,7 @@ import { CartItem, addToCart } from '../../services/products/cartSlice';
 import { useGetProductsQuery } from '../../services/products/productsApiSlice';
 
 export const CartProducts: FC = () => {
-	const { data = [] } = useGetProductsQuery();
+	const { data = [] } = useGetProductsQuery([]);
 	const dispatch = useDispatch();
 	const history = createBrowserHistory();
 

@@ -19,7 +19,7 @@ export const usersApiSlice = createApi({
 
 	endpoints(builder) {
 		return {
-			getUsers: builder.query<IUsers[], number>({
+			getUsers: builder.query<IUsers[], []>({
 				query: () => 'users',
 				transformResponse(data: IUser[]) {
 					//@ts-expect-error "Default is on the data object"

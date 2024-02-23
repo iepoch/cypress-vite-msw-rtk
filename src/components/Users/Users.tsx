@@ -6,14 +6,14 @@ import { UsersList } from './UsersList';
 import Table from '@mui/joy/Table';
 
 export const Users = () => {
-	const { data = [] } = useGetUsersQuery();
+	const { data = [] } = useGetUsersQuery([]);
 
 	return (
 		<Box
 			component="main"
 			className="MainContent"
 			sx={{
-				px: { xs: 2, md: 6 },
+				pl: { xs: 2, md: 40 },
 				pt: {
 					xs: 'calc(12px + var(--Header-height))',
 					sm: 'calc(12px + var(--Header-height))',
@@ -33,7 +33,7 @@ export const Users = () => {
 				variant="outlined"
 				sx={{
 					display: { xs: 'none', sm: 'initial' },
-					width: '100%',
+					width: '80%',
 					borderRadius: 'sm',
 					flexShrink: 1,
 					overflow: 'auto',
@@ -60,7 +60,7 @@ export const Users = () => {
 							<th style={{ width: 140, padding: '12px 6px' }}>First Name</th>
 							<th style={{ width: 140, padding: '12px 6px' }}>Last Name</th>
 							<th style={{ width: 240, padding: '12px 6px' }}>Email</th>
-							<th style={{ width: 140, padding: '12px 6px' }}> </th>
+
 						</tr>
 					</thead>
 					<tbody>
