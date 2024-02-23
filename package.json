@@ -8,6 +8,7 @@
     "cypress": "start-server-and-test dev http://localhost:3000  'cypress open'",
     "test": "start-server-and-test dev http://localhost:3000 'cypress run'",
     "format": "prettier --write src",
+    "lint:fix": "biome check --apply ./src",
     "test:ci": "cypress run",
     "build": "tsc && vite build",
     "preview": "vite preview",
@@ -32,6 +33,7 @@
     "react-toastify": "^10.0.4"
   },
   "devDependencies": {
+    "@biomejs/biome": "1.5.3",
     "@cypress/code-coverage": "^3.12.19",
     "@cypress/vite-plugin-cypress-esm": "^1.1.0",
     "@tailwindcss/forms": "^0.5.7",

@@ -1,15 +1,15 @@
-import 'react-toastify/dist/ReactToastify.css';
-import { createRootRoute, Outlet } from '@tanstack/react-router';
+import { Outlet, createRootRoute } from '@tanstack/react-router';
 import { TanStackRouterDevtools } from '@tanstack/router-devtools';
-import ResponsiveAppBar from '../components/Appbar/Appbar';
 import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import ResponsiveAppBar from '../components/Appbar/Appbar';
 export const Route = createRootRoute({
-  component: () => (
-    <>
-      <ToastContainer />
-      <ResponsiveAppBar />
-      <Outlet />
-      <TanStackRouterDevtools />
-    </>
-  ),
+	component: () => (
+		<>
+			<ToastContainer />
+			<ResponsiveAppBar />
+			<Outlet />
+			<TanStackRouterDevtools />
+		</>
+	),
 });
