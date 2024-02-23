@@ -1,6 +1,8 @@
-import { Drawer, Typography } from '@mui/material';
+import { Drawer } from '@mui/material';
 import { useAppSelector } from '../../app/hooks';
 import { CartItems } from './CartItem';
+import { Divider, Sheet, Typography } from '@mui/joy';
+
 
 type Props = {
   open: boolean;
@@ -26,9 +28,10 @@ export const CartDrawer = ({ open, onClose }: Props) => {
     >
       <>
         <h2>Cart</h2>
+        <Divider />
         {cart.cartItems.length === 0 ? <p> No Items in cart</p> : null}
         {cart.cartItems.map((product) => (
-          <div>
+        <Sheet color="neutral" variant="plain" sx={{  mt:1, maxWidth: '90%'  }}>
             <CartItems
               key={
                 product.id +
@@ -38,10 +41,11 @@ export const CartDrawer = ({ open, onClose }: Props) => {
               }
               product={product}
             />
-            <Typography sx={{ marginLeft: 40 }}>
+            <Typography level="title-md" variant="soft" >
               Total: ${(product.price * product.cartQuantity).toFixed(2)}
             </Typography>
-          </div>
+            <Divider />
+          </Sheet>
         ))}
       </>
     </Drawer>

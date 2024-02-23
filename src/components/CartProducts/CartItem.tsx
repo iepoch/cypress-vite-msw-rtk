@@ -6,12 +6,10 @@ import {
 } from '../../services/products/cartSlice';
 import {
   Button,
-  Card,
-  CardContent,
-  CardMedia,
-  Typography,
   CardActions,
 } from '@mui/material';
+import { AspectRatio, Avatar, Box, Typography} from '@mui/joy';
+import { useState } from 'react';
 
 type Props = {
   product: CartItem;
@@ -19,42 +17,26 @@ type Props = {
 
 export const CartItems = ({ product }: Props) => {
   const dispatch = useDispatch();
+  const [ loading , setLoading] = useState(true)
 
   return (
-    <Card
-      key={
-        product.id + product.price + product.rating.count + product.rating.rate
-      }
-      sx={{
-        maxWidth: 300,
-        mt: 4,
-        p: 4,
-        marginLeft: 10,
-        backgroundColor: (theme) =>
-          theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
-      }}
-    >
-      <CardContent
-        sx={{ display: 'flex', flexDirection: 'column', maxHeight: 40 }}
+ <Box key={ product.id + product.price + product.rating.rate }
+      sx={{ display: 'flex',  flexDirection:'column', maxHeight:400}}>
+      <Box
+      maxHeight={200}
+      width={400}
+      display="flex"
+      alignItems="center"
+      gap={4}
+      p={4}
+      sx={{ }}
       >
-        <Typography variant="h6">{product.title}</Typography>
-      </CardContent>
-      <CardContent
-        sx={{
-          display: 'flex',
-          flexDirection: 'row',
-          justifyContent: 'space-between',
-        }}
-      >
-        <p>Price: ${product.price}</p>
-        <CardMedia
-          component="img"
-          sx={{ objectFit: 'scale-down', alignItems: 'left', width: 90 }}
-          image={product.image}
-        />
-      </CardContent>
-      <Typography sx={{ ml: 13.5 }}>Quantity</Typography>
-      <CardActions sx={{ justifyContent: 'center' }}>
+        <Typography level="body-sm" variant="plain" >{product.title}</Typography> 
+        <Typography level="body-sm" variant="plain">Price: ${product.price}</Typography>
+        <Avatar alt={product.description} src={product.image} sx={{  alignItems: 'left', blockSize:50}} />
+      </Box>
+      <Box   display="flex"  alignItems="center" gap={6} p={2}>
+      <Typography level="body-sm" variant="plain">Quantity</Typography> 
         <Button size="small" onClick={() => dispatch(addToCart(product))}>
           +
         </Button>
@@ -62,7 +44,7 @@ export const CartItems = ({ product }: Props) => {
         <Button size="small" onClick={() => dispatch(removeFromCart(product))}>
           -
         </Button>
-      </CardActions>
-    </Card>
+      </Box>
+    </Box>
   );
 };
