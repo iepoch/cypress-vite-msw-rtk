@@ -1,6 +1,7 @@
-import { Divider, Sheet, Typography } from '@mui/joy';
+import { Button, Divider, Sheet, Typography } from '@mui/joy';
 import { Drawer } from '@mui/material';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { clearCart } from '../../services/products/cartSlice';
 import { CartItems } from './CartItem';
 
 type Props = {
@@ -10,6 +11,7 @@ type Props = {
 
 export const CartDrawer = ({ open, onClose }: Props) => {
 	const cart = useAppSelector((state) => state.cart);
+	const dispatch = useAppDispatch();
 
 	return (
 		<Drawer
@@ -28,6 +30,14 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 			<>
 				<h2>Cart</h2>
 				<Divider />
+				<Button
+					sx={{ p: 3, mt: 2 }}
+					onClick={() => dispatch(clearCart())}
+					size="lg"
+					variant="soft"
+				>
+					Clear the cart
+				</Button>
 				{cart.cartItems.length === 0 ? <p> No Items in cart</p> : null}
 				{cart.cartItems.map((product) => (
 					<Sheet
