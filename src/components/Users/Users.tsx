@@ -60,7 +60,6 @@ export const Users = () => {
 							<th style={{ width: 140, padding: '12px 6px' }}>First Name</th>
 							<th style={{ width: 140, padding: '12px 6px' }}>Last Name</th>
 							<th style={{ width: 240, padding: '12px 6px' }}>Email</th>
-
 						</tr>
 					</thead>
 					<tbody>
