@@ -1,4 +1,5 @@
-import Typography from '@mui/joy/Typography';
+import { Typography } from '@mui/joy';
+
 
 export type Props = {
 	users: {

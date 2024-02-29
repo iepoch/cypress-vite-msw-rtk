@@ -1,8 +1,6 @@
 import { CartDrawer } from "./CartDrawer"
 
 describe('', () => {
-    beforeEach(() =>{})
-
     it('CartDrawer', () => {
         const showCart = true
         cy.mountComponent(<CartDrawer open={showCart}

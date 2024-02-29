@@ -32,8 +32,7 @@ Cypress.Commands.add('mountComponent', (testComponent: React.ReactNode) => {
   });
   
   Cypress.Commands.add('mountWithRedux', (component, options = {}) => {
-    // Use the default store if one is not provided
-    //@ts-expect-error 'Store is available'
+
     const { reduxStore = store, ...mountOptions } = options
   
     const wrapped = <Provider store={reduxStore}>{component}</Provider>

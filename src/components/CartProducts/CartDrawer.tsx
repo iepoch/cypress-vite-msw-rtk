@@ -1,4 +1,4 @@
-import { Button, Divider, Sheet, Typography } from '@mui/joy';
+import { Box, Button, Divider, Sheet, Typography } from '@mui/joy';
 import { Drawer } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { clearCart } from '../../services/products/cartSlice';
@@ -18,17 +18,18 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 			open={open}
 			onClose={onClose}
 			anchor="right"
-			PaperProps={{
-				sx: {
-					width: 500,
-					backgroundColor: 'white',
-					borderRadius: 0,
-					alignItems: 'center',
-				},
-			}}
 		>
-			<>
-				<h2>Cart</h2>
+	
+		<Box
+		width={500}
+		display="flex"
+		justifyContent='center'
+		flexDirection='column'
+		alignItems="center"
+		gap={4}
+		p={2}
+		sx={{backgroundColor: 'white',}}>
+					<h2>Cart</h2>
 				<Divider />
 				<Button
 					sx={{ p: 3, mt: 2 }}
@@ -44,7 +45,7 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 					key={product.id + product.price + product.rating.rate + product.title}
 						color="neutral"
 						variant="plain"
-						sx={{ mt: 1, maxWidth: '90%' }}
+						sx={{ mt: 4, maxWidth: '90%' }}
 					>
 						<CartItems product={product}/>
 						<Typography level="title-md" variant="soft">
@@ -53,7 +54,7 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 						<Divider />
 					</Sheet>
 				))}
-			</>
+			</Box>
 		</Drawer>
 	);
 };

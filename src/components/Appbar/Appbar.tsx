@@ -1,16 +1,19 @@
 import { ShoppingCartCheckoutOutlined } from '@mui/icons-material';
-import AdbIcon from '@mui/icons-material/Adb';
-import MenuIcon from '@mui/icons-material/Menu';
-import { AppBar, Badge, Box, Button, Toolbar } from '@mui/material';
-import Container from '@mui/material/Container';
+import AppBar from '@mui/material/AppBar';
+import Box from '@mui/material/Box';
+import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import Typography from '@mui/material/Typography';
+import Menu from '@mui/material/Menu';
+import MenuIcon from '@mui/icons-material/Menu';
+import Container from '@mui/material/Container';
+import Badge from '@mui/material/Badge';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import AdbIcon from '@mui/icons-material/Adb';
 import { Link } from '@tanstack/react-router';
 import React, { useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import { dogsApiSlice } from '../../services/dogs/dogApiSlice';
 import { CartDrawer } from '../CartProducts/CartDrawer';
 
 const pages_ = [
@@ -38,7 +41,9 @@ const pages_ = [
 
 const ResponsiveAppBar = () => {
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-	const [showCart, setShowCart] = useState<boolean>(false);
+
+	// const [showCart, setShowCart] = useState<boolean>(false);
+
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElNav(event.currentTarget);
 	};
@@ -47,11 +52,7 @@ const ResponsiveAppBar = () => {
 		setAnchorElNav(null);
 	};
 
-	const cart = useAppSelector((state) => state.cart);
-
-	const isLoading = () => {
-		dogsApiSlice.usePrefetch('fetchBreeds');
-	};
+	// const cart = useAppSelector((state) => state.cart);
 	return (
 		<AppBar position="static" sx={{ background: 'gray', boxShadow: 'none' }}>
 			<Container maxWidth="xl">
@@ -110,7 +111,6 @@ const ResponsiveAppBar = () => {
 									<MenuItem
 										key={page.menuTitle}
 										onClick={handleCloseNavMenu}
-										onLoad={isLoading}
 									>
 										<Typography
 											key={page.menuTitle}
@@ -170,14 +170,14 @@ const ResponsiveAppBar = () => {
 							);
 						})}
 					</Box>
-					<Badge badgeContent={cart.cartItems.length} color="secondary">
+					{/* <Badge badgeContent={cart.cartItems.length} color="secondary">
 						<ShoppingCartCheckoutOutlined onClick={() => setShowCart(true)} />
 						<CartDrawer
 							key={cart.cartItems.length}
 							open={showCart}
 							onClose={() => setShowCart(false)}
 						/>
-					</Badge>
+					</Badge> */}
 				</Toolbar>
 			</Container>
 		</AppBar>

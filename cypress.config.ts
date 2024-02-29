@@ -5,7 +5,7 @@ const __dirname = path.dirname('./vite.config.ts');
 
 export default defineConfig({
   e2e: {
-    baseUrl: 'http://localhost:3001/',
+    baseUrl: 'http://localhost:3000/',
     specPattern: '**/*.e2e.ts',
     video: false,
     modifyObstructiveCode: true,

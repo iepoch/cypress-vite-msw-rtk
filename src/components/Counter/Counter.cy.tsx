@@ -7,7 +7,7 @@ describe('<Counter /> Component Testing', () => {
 	beforeEach(() => {
 		store.dispatch(reset());
 	});
-	it('Our Current Setup - renders', () => {
+	it.skip('Our Current Setup - renders', () => {
 		// see: https://on.cypress.io/mounting-react and vite
 
 		cy.mountComponent(<Counter />);

@@ -1,8 +1,5 @@
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Stack from '@mui/material/Stack';
-import Grid from '@mui/material/Unstable_Grid2';
 import React, { FC } from 'react';
+import {Box, Button, Stack, Grid } from '@mui/joy';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { amountAdded, reset } from '../../services/counter/counter-slice';
 
@@ -19,17 +16,17 @@ const Counter: FC = () => {
 					<Grid container spacing={2} minHeight={500}>
 						<Grid xs display="flex" justifyContent="center" alignItems="center">
 							<Stack direction="row" spacing={2}>
-								<Button
-									onClick={handleClick}
-									variant="contained"
-									data-testid="counter-button"
+								<Button 
+								color='primary'
+								onClick={handleClick}
+								data-testid="counter-button"
 								>
 									Count is: {count}
 								</Button>
-								<Button
-									onClick={clearCount}
-									variant="contained"
-									data-cy="counter-clear-bttn"
+								<Button 
+								color='primary'
+								onClick={clearCount}
+								data-cy="counter-clear-bttn"
 								>
 									Clear Count
 								</Button>

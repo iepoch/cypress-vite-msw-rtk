@@ -1,9 +1,6 @@
-import Sheet from '@mui/joy/Sheet';
-import { Box } from '@mui/material';
-import { useGetUsersQuery } from '../../services/users/usersApiSlice';
+import {Box, Sheet, Table} from '@mui/joy';
+import { IUsers, useGetUsersQuery } from '../../services/users/usersApiSlice';
 import { UsersList } from './UsersList';
-
-import Table from '@mui/joy/Table';
 
 export const Users = () => {
 	const { data = [] } = useGetUsersQuery([]);
@@ -63,7 +60,7 @@ export const Users = () => {
 						</tr>
 					</thead>
 					<tbody>
-						{data.map((users) => (
+						{data.map((users: IUsers) => (
 							<UsersList key={users.id} users={users} />
 						))}
 					</tbody>
