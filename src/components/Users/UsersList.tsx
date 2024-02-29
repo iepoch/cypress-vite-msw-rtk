@@ -12,7 +12,7 @@ export type Props = {
 export const UsersList = ({ users }: Props) => {
 	const { id, firstName, lastName, email } = users;
 	return (
-		<tr key={id}>
+		<tr key={id + lastName}>
 			<td>
 				<Typography level="body-xs">{firstName}</Typography>
 			</td>

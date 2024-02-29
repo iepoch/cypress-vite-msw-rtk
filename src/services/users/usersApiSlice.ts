@@ -16,7 +16,9 @@ export const usersApiSlice = createApi({
 	baseQuery: fetchBaseQuery({
 		baseUrl: '/api/',
 	}),
-
+	refetchOnFocus: true,
+	refetchOnReconnect: true,
+	refetchOnMountOrArgChange: true,
 	endpoints(builder) {
 		return {
 			getUsers: builder.query<IUsers[], []>({

@@ -18,9 +18,6 @@ export const dogsApiSlice = createApi({
 			return headers;
 		},
 	}),
-	refetchOnFocus: true,
-	refetchOnReconnect: true,
-	refetchOnMountOrArgChange: true,
 	endpoints(builder) {
 		return {
 			fetchBreeds: builder.query<Breed[], number>({

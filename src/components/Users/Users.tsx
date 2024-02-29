@@ -64,7 +64,7 @@ export const Users = () => {
 					</thead>
 					<tbody>
 						{data.map((users) => (
-							<UsersList users={users} />
+							<UsersList key={users.id} users={users} />
 						))}
 					</tbody>
 				</Table>

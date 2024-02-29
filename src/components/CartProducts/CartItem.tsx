@@ -16,7 +16,7 @@ export const CartItems = ({ product }: Props) => {
 
 	return (
 		<Box
-			key={product.id + product.price + product.rating.rate}
+			
 			sx={{ display: 'flex', flexDirection: 'column', maxHeight: 400 }}
 		>
 			<Box
@@ -40,7 +40,7 @@ export const CartItems = ({ product }: Props) => {
 					sx={{ alignItems: 'left', blockSize: 50 }}
 				/>
 			</Box>
-			<Box display="flex" alignItems="center" gap={6} p={2}>
+			<Box key={product.id + product.price + product.rating.rate + product.title} display="flex" alignItems="center" gap={6} p={2}>
 				<Typography level="body-sm" variant="plain">
 					Quantity
 				</Typography>

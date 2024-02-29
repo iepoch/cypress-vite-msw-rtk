@@ -13,7 +13,7 @@ const data = fetch('https://api.thecatapi.com/v1/breeds?limit=90', {
 
 export const scenarios = {
 	success: [
-		http.all('https://api.thedogapi.com/v1/breeds?limit=90', async () => {
+		http.get('https://api.thedogapi.com/v1/breeds?limit=90', async () => {
 			return HttpResponse.json(await data);
 		}),
 	],
