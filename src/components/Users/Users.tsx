@@ -1,4 +1,4 @@
-import {Box, Sheet, Table} from '@mui/joy';
+import { Box, Sheet, Table } from '@mui/joy';
 import { IUsers, useGetUsersQuery } from '../../services/users/usersApiSlice';
 import { UsersList } from './UsersList';
 

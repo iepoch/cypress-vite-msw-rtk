@@ -1,16 +1,16 @@
 import { ShoppingCartCheckoutOutlined } from '@mui/icons-material';
-import AppBar from '@mui/material/AppBar';
-import Box from '@mui/material/Box';
-import Toolbar from '@mui/material/Toolbar';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
-import Container from '@mui/material/Container';
-import Badge from '@mui/material/Badge';
-import Button from '@mui/material/Button';
-import MenuItem from '@mui/material/MenuItem';
 import AdbIcon from '@mui/icons-material/Adb';
+import MenuIcon from '@mui/icons-material/Menu';
+import AppBar from '@mui/material/AppBar';
+import Badge from '@mui/material/Badge';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
+import Container from '@mui/material/Container';
+import IconButton from '@mui/material/IconButton';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 import { Link } from '@tanstack/react-router';
 import React, { useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
@@ -108,10 +108,7 @@ const ResponsiveAppBar = () => {
 							{pages_.map((page) => {
 								const { menuTitle, pageURL } = page;
 								return (
-									<MenuItem
-										key={page.menuTitle}
-										onClick={handleCloseNavMenu}
-									>
+									<MenuItem key={page.menuTitle} onClick={handleCloseNavMenu}>
 										<Typography
 											key={page.menuTitle}
 											component={Link}

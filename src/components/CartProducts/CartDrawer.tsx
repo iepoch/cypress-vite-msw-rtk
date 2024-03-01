@@ -14,22 +14,18 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 	const dispatch = useAppDispatch();
 
 	return (
-		<Drawer
-			open={open}
-			onClose={onClose}
-			anchor="right"
-		>
-	
-		<Box
-		width={500}
-		display="flex"
-		justifyContent='center'
-		flexDirection='column'
-		alignItems="center"
-		gap={4}
-		p={2}
-		sx={{backgroundColor: 'white',}}>
-					<h2>Cart</h2>
+		<Drawer open={open} onClose={onClose} anchor="right">
+			<Box
+				width={500}
+				display="flex"
+				justifyContent="center"
+				flexDirection="column"
+				alignItems="center"
+				gap={4}
+				p={2}
+				sx={{ backgroundColor: 'white' }}
+			>
+				<h2>Cart</h2>
 				<Divider />
 				<Button
 					sx={{ p: 3, mt: 2 }}
@@ -42,12 +38,14 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 				{cart.cartItems.length === 0 ? <p> No Items in cart</p> : null}
 				{cart.cartItems.map((product) => (
 					<Sheet
-					key={product.id + product.price + product.rating.rate + product.title}
+						key={
+							product.id + product.price + product.rating.rate + product.title
+						}
 						color="neutral"
 						variant="plain"
 						sx={{ mt: 4, maxWidth: '90%' }}
 					>
-						<CartItems product={product}/>
+						<CartItems product={product} />
 						<Typography level="title-md" variant="soft">
 							Total: ${(product.price * product.cartQuantity).toFixed(2)}
 						</Typography>
