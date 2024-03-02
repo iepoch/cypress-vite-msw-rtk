@@ -1,5 +1,6 @@
 import path from 'path'
 import { defineConfig } from 'cypress'
+import  injectDevServer from 'cypress/react/plugins/react-scripts';
 import vitePreprocessor from 'cypress-vite'
 const __dirname = path.dirname('./vite.config.ts');
 
@@ -18,7 +19,9 @@ export default defineConfig({
         )
       },
     },
-
+    injectDevServer(on, config){
+      return config
+    },
     component: {
       devServer: {
         framework: "react",

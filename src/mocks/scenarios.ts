@@ -1,6 +1,6 @@
 import { http, HttpResponse } from 'msw';
 const CAT_API_KEY =
-	'';
+	'live_EiKwF9ILaReLkIvHz9y2zaofHufZgkyNwRV2FawCc77zwbAe7AJUBdLjhdqk27Jn';
 
 const data = fetch('https://api.thecatapi.com/v1/breeds', {
 	headers: {

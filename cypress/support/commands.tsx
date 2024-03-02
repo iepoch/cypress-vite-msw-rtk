@@ -39,3 +39,12 @@ Cypress.Commands.add('mountComponent', (testComponent: React.ReactNode) => {
   
     return cy.mount(wrapped, mountOptions)
   })
+
+  Cypress.Commands.add('mountWithRouter', (component) =>{
+    // const { routerProps = { initialEntries: ['/'] }, ...mountOptions } = options
+
+    const wrapped = <MemoryRouter >{component}</MemoryRouter>
+  
+    return cy.mount(wrapped)
+  
+  })

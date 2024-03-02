@@ -5,12 +5,13 @@ import { dogsApiSlice } from '../services/dogs/dogApiSlice';
 import cartReducer from '../services/products/cartSlice';
 import { productsApiSlice } from '../services/products/productsApiSlice';
 import { usersApiSlice } from '../services/users/usersApiSlice';
+import appBarReducer from '../services/appbar/appbar-slice';
 
 const rootReducer = combineSlices(
 	usersApiSlice,
 	dogsApiSlice,
 	productsApiSlice,
-	{ counter: counterReducer, cart: cartReducer },
+	{ counter: counterReducer, cart: cartReducer, appBar: appBarReducer },
 );
 
 export const store = configureStore({

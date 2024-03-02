@@ -12,9 +12,11 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from '@tanstack/react-router';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { CartDrawer } from '../CartProducts/CartDrawer';
+import { setShowCart } from '../../services/appbar/appbar-slice';
+import { useDispatch } from 'react-redux';
 
 const pages_ = [
 	{
@@ -39,11 +41,17 @@ const pages_ = [
 	},
 ];
 
-const ResponsiveAppBar = () => {
-	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+const ResponsiveAppBar: FC = () => {
+	// const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 
 	// const [showCart, setShowCart] = useState<boolean>(false);
+	const anchorElNav = useAppSelector(state => state.stateAnchor)
+	const showCart = useAppSelector(state => state.stateCart)
+    // const setShowCart = useAppSelector(state => state.setShowCart)
+	const cart = useAppSelector((state) => state.cart);
+	const dispatch = useDispatch()
 
+	const handleShowCart = (boolean) => dispatch(setShowCart(boolean))
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElNav(event.currentTarget);
 	};
@@ -52,7 +60,6 @@ const ResponsiveAppBar = () => {
 		setAnchorElNav(null);
 	};
 
-	// const cart = useAppSelector((state) => state.cart);
 	return (
 		<AppBar position="static" sx={{ background: 'gray', boxShadow: 'none' }}>
 			<Container maxWidth="xl">
@@ -167,14 +174,14 @@ const ResponsiveAppBar = () => {
 							);
 						})}
 					</Box>
-					{/* <Badge badgeContent={cart.cartItems.length} color="secondary">
-						<ShoppingCartCheckoutOutlined onClick={() => setShowCart(true)} />
+					<Badge badgeContent={cart.cartItems.length} color="secondary">
+						<ShoppingCartCheckoutOutlined onClick={() => handleShowCart(false)} />
 						<CartDrawer
 							key={cart.cartItems.length}
 							open={showCart}
-							onClose={() => setShowCart(false)}
+							onClose={() => handleShowCart(false)}
 						/>
-					</Badge> */}
+					</Badge>
 				</Toolbar>
 			</Container>
 		</AppBar>
