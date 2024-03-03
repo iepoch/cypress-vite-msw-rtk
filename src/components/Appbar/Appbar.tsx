@@ -12,52 +12,50 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from '@tanstack/react-router';
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { CartDrawer } from '../CartProducts/CartDrawer';
-import { setShowCart } from '../../services/appbar/appbar-slice';
+import { setAnchorElNav, setShowCart } from '../../services/appbar/appbar-slice';
 import { useDispatch } from 'react-redux';
+import { useGetPagesQuery } from '../../services/appbar/pagesApiSlice';
 
-const pages_ = [
-	{
-		menuTitle: 'Home',
-		pageURL: '/',
-	},
-	{
-		menuTitle: 'Cart',
-		pageURL: '/cart',
-	},
-	{
-		menuTitle: 'Counter',
-		pageURL: '/counter',
-	},
-	{
-		menuTitle: 'Dogs',
-		pageURL: '/dogs',
-	},
-	{
-		menuTitle: 'Users',
-		pageURL: '/users',
-	},
-];
+// const pages_ = [
+// 	{
+// 		menuTitle: 'Home',
+// 		pageURL: '/',
+// 	},
+// 	{
+// 		menuTitle: 'Cart',
+// 		pageURL: '/cart',
+// 	},
+// 	{
+// 		menuTitle: 'Counter',
+// 		pageURL: '/counter',
+// 	},
+// 	{
+// 		menuTitle: 'Dogs',
+// 		pageURL: '/dogs',
+// 	},
+// 	{
+// 		menuTitle: 'Users',
+// 		pageURL: '/users',
+// 	},
+// ];
 
 const ResponsiveAppBar: FC = () => {
-	// const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-
-	// const [showCart, setShowCart] = useState<boolean>(false);
-	const anchorElNav = useAppSelector(state => state.stateAnchor)
-	const showCart = useAppSelector(state => state.stateCart)
-    // const setShowCart = useAppSelector(state => state.setShowCart)
+	const { data = []} = useGetPagesQuery([]);
+	const anchorElNav = useAppSelector(state => state.appBar.anchorElNav);
+	const showCart = useAppSelector(state => state.appBar.showCart);
 	const cart = useAppSelector((state) => state.cart);
 	const dispatch = useDispatch()
 
-	const handleShowCart = (boolean) => dispatch(setShowCart(boolean))
+
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-		setAnchorElNav(event.currentTarget);
+		dispatch(setAnchorElNav(event.currentTarget))
 	};
 
 	const handleCloseNavMenu = () => {
-		setAnchorElNav(null);
+		dispatch(setAnchorElNav(null));
 	};
 
 	return (
@@ -112,12 +110,12 @@ const ResponsiveAppBar: FC = () => {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							{pages_.map((page) => {
-								const { menuTitle, pageURL } = page;
+							{data.map((page) => {
+								const { id, menuTitle, pageURL } = page;
 								return (
-									<MenuItem key={page.menuTitle} onClick={handleCloseNavMenu}>
+									<MenuItem key={id} onClick={handleCloseNavMenu}>
 										<Typography
-											key={page.menuTitle}
+											key={id}
 											component={Link}
 											to={pageURL}
 											color="primary"
@@ -160,11 +158,11 @@ const ResponsiveAppBar: FC = () => {
 							display: { xs: 'none', md: 'flex' },
 						}}
 					>
-						{pages_.map((page) => {
-							const { menuTitle, pageURL } = page;
+						{data.map((page) => {
+							const { id, menuTitle, pageURL } = page;
 							return (
 								<Button
-									key={page.menuTitle}
+									key={id + menuTitle}
 									component={Link}
 									to={pageURL}
 									color="inherit"
@@ -175,11 +173,11 @@ const ResponsiveAppBar: FC = () => {
 						})}
 					</Box>
 					<Badge badgeContent={cart.cartItems.length} color="secondary">
-						<ShoppingCartCheckoutOutlined onClick={() => handleShowCart(false)} />
+						<ShoppingCartCheckoutOutlined onClick={() => dispatch(setShowCart(true))} />
 						<CartDrawer
 							key={cart.cartItems.length}
 							open={showCart}
-							onClose={() => handleShowCart(false)}
+							onClose={() => dispatch(setShowCart(false))}
 						/>
 					</Badge>
 				</Toolbar>

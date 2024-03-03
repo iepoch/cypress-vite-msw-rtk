@@ -1,0 +1,27 @@
+[
+	{
+		"id": 1,
+		"menuTitle": "Home",
+		"pageURL": "/"
+	},
+	{
+		"id": 2,
+		"menuTitle": "Cart",
+		"pageURL": "/cart"
+	},
+	{
+		"id": 3,
+		"menuTitle": "Counter",
+		"pageURL": "/counter"
+	},
+	{
+		"id": 4,
+		"menuTitle": "Dogs",
+		"pageURL": "/dogs"
+	},
+	{
+		"id": 5,
+		"menuTitle": "Users",
+		"pageURL": "/users"
+	}
+]

@@ -4,6 +4,7 @@ import counterReducer from '../services/counter/counter-slice';
 import { dogsApiSlice } from '../services/dogs/dogApiSlice';
 import cartReducer from '../services/products/cartSlice';
 import { productsApiSlice } from '../services/products/productsApiSlice';
+import {pagesApiSlice} from '../services/appbar/pagesApiSlice';
 import { usersApiSlice } from '../services/users/usersApiSlice';
 import appBarReducer from '../services/appbar/appbar-slice';
 
@@ -11,6 +12,7 @@ const rootReducer = combineSlices(
 	usersApiSlice,
 	dogsApiSlice,
 	productsApiSlice,
+	pagesApiSlice,
 	{ counter: counterReducer, cart: cartReducer, appBar: appBarReducer },
 );
 
@@ -21,6 +23,7 @@ export const store = configureStore({
 			dogsApiSlice.middleware,
 			usersApiSlice.middleware,
 			productsApiSlice.middleware,
+			pagesApiSlice.middleware,
 		);
 	},
 });

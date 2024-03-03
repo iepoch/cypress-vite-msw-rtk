@@ -5,7 +5,7 @@ describe('Render the AppBar', () => {
 		cy.viewport(1920, 1280);
 
 		cy.mountComponent(<ResponsiveAppBar />);
-		cy.get(ResponsiveAppBar).invoke('useState', { setShowCart: false})
+		// cy.get(ResponsiveAppBar).invoke('useState', { setShowCart: false})
 		cy.get('a').contains('Home').should('have.class', 'active')
 	});
 });

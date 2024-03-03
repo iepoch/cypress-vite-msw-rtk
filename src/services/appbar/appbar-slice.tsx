@@ -3,7 +3,7 @@ import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 
 interface AppBarState {
 	showCart: boolean;
-    anchorElNav: null | HTMLElement;
+    anchorElNav: HTMLElement | null
 
 }
 
@@ -23,14 +23,20 @@ const appBarSlice = createSlice({
         state.showCart;
     },
     setShowCart(state, action: PayloadAction<boolean>){
-        state.showCart = action.payload;
+      return {
+            ...state,
+            showCart: action.payload,
+        }
     },
-    setAnchorElNav(state, action: PayloadAction<null>){
-        state.anchorElNav = action.payload;
+    setAnchorElNav(state, action: PayloadAction<HTMLElement | null>){
+        return {
+            ...state,
+            anchorElNav: action.payload,
+        }
     },
     reset: () => initialState,
 	},
 });
 
-export const { anchorElNav, setShowCart, setAnchorElNav, reset } = appBarSlice.actions;
+export const { setShowCart, setAnchorElNav, reset } = appBarSlice.actions;
 export default appBarSlice.reducer;
