@@ -1,10 +1,30 @@
 {
   "compilerOptions": {
-    "composite": true,
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "types": ["cypress", "@testing-library/cypress"],
+    "allowJs": true,
     "skipLibCheck": true,
-    "module": "ESNext",
-    "moduleResolution": "node",
+    "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx"
   },
-  "include": ["vite.config.ts", "*.json","cypress", "node"]
+  "include": [
+    "src",
+    "cypress",
+    "node",
+    "./**/*", "../cypress/support/types"
+  ]
 }

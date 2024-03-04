@@ -7,7 +7,7 @@ describe('<Counter /> Component Testing', () => {
 	beforeEach(() => {
 		store.dispatch(reset());
 	});
-	it.skip('Our Current Setup - renders', () => {
+	it('Our Current Setup Using RTKQuery - renders', () => {
 		// see: https://on.cypress.io/mounting-react and vite
 
 		cy.mountComponent(<Counter />);
@@ -18,7 +18,7 @@ describe('<Counter /> Component Testing', () => {
 		cy.get('[data-testid="counter-button"]').contains(0);
 	});
 
-	it('Simple Setup - RTK', () => {
+	it('Simple Setup - With RTK', () => {
 		// see: https://on.cypress.io/mounting-react and vite
 		const component = <Counter />;
 		const wrapped = <Provider store={store}>{component}</Provider>;

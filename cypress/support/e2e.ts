@@ -3,7 +3,7 @@ import { worker } from '../../src/mocks/browser';
 
 before(() => {
   worker.start({
-    onUnhandledRequest: 'bypass',
+		onUnhandledRequest: 'bypass',
   });
 });
 

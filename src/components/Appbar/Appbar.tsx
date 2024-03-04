@@ -12,29 +12,24 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from '@tanstack/react-router';
-import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { FC, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import {
-	setAnchorElNav,
-	setShowCart,
-} from '../../services/appbar/appbar-slice';
 import { useGetPagesQuery } from '../../services/appbar/pagesApiSlice';
 import { CartDrawer } from '../CartProducts/CartDrawer';
 
 const ResponsiveAppBar: FC = () => {
 	const { data = [] } = useGetPagesQuery([]);
-	const anchorElNav = useAppSelector((state) => state.appBar.anchorElNav);
-	const showCart = useAppSelector((state) => state.appBar.showCart);
+	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
+	const [showCart, setShowCart] = useState<boolean>(false);
+
 	const cart = useAppSelector((state) => state.cart);
-	const dispatch = useDispatch();
 
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-		dispatch(setAnchorElNav(event.currentTarget));
+		setAnchorElNav(event.currentTarget);
 	};
 
 	const handleCloseNavMenu = () => {
-		dispatch(setAnchorElNav(null));
+		setAnchorElNav(null);
 	};
 
 	return (
@@ -153,12 +148,12 @@ const ResponsiveAppBar: FC = () => {
 					</Box>
 					<Badge badgeContent={cart.cartItems.length} color="secondary">
 						<ShoppingCartCheckoutOutlined
-							onClick={() => dispatch(setShowCart(true))}
+							onClick={() => setShowCart(true)}
 						/>
 						<CartDrawer
 							key={cart.cartItems.length}
 							open={showCart}
-							onClose={() => dispatch(setShowCart(false))}
+							onClose={() => setShowCart(false)}
 						/>
 					</Badge>
 				</Toolbar>

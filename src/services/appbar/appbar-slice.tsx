@@ -14,12 +14,6 @@ const appBarSlice = createSlice({
 	name: 'appBar',
 	initialState,
 	reducers: {
-		stateAnchor(state) {
-			state.anchorElNav;
-		},
-		stateCart(state) {
-			state.showCart;
-		},
 		setShowCart(state, action: PayloadAction<boolean>) {
 			return {
 				...state,

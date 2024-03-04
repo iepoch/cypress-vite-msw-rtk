@@ -1,9 +1,10 @@
 import { CartProducts } from './CartProducts';
 
 describe('', () => {
-	it('CartDrawer', () => {
-		// const showCart = true;
+	it('Cart Products is displayed', () => {
 		cy.mountComponent(<CartProducts />);
-		// cy.findAllByText('Clear the cart').should('exist');
+		cy.findByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops')
+		.should('be.visible')
+		cy.findByText('DANVOUY Womens T Shirt Casual Cotton Short').should('be.visible')
 	});
 });

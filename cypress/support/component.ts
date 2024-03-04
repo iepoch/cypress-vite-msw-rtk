@@ -9,7 +9,7 @@ import { RootState } from '../../src/app/store';
 
 Cypress.on('test:before:run:async', async () => {
   await worker.start({
-    onUnhandledRequest: 'bypass',
+		onUnhandledRequest: 'bypass',
   });
 });
 

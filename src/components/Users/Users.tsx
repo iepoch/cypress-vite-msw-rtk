@@ -4,6 +4,10 @@ import { UsersList } from './UsersList';
 
 export const Users = () => {
 	const { data = [] } = useGetUsersQuery([]);
+	// const theme = {
+	// 	width: 140,
+	// 	padding: '12px 6px'
+	// }
 
 	return (
 		<Box
@@ -38,7 +42,7 @@ export const Users = () => {
 				}}
 			>
 				<Table
-					aria-labelledby="tableTitle"
+					aria-labelledby="UserTable"
 					stickyHeader
 					hoverRow
 					sx={{
@@ -54,9 +58,9 @@ export const Users = () => {
 				>
 					<thead>
 						<tr>
-							<th style={{ width: 140, padding: '12px 6px' }}>First Name</th>
-							<th style={{ width: 140, padding: '12px 6px' }}>Last Name</th>
-							<th style={{ width: 240, padding: '12px 6px' }}>Email</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email</th>
 						</tr>
 					</thead>
 					<tbody>
