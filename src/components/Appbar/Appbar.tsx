@@ -13,45 +13,24 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from '@tanstack/react-router';
 import React, { FC } from 'react';
-import { useAppSelector } from '../../app/hooks';
-import { CartDrawer } from '../CartProducts/CartDrawer';
-import { setAnchorElNav, setShowCart } from '../../services/appbar/appbar-slice';
 import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../app/hooks';
+import {
+	setAnchorElNav,
+	setShowCart,
+} from '../../services/appbar/appbar-slice';
 import { useGetPagesQuery } from '../../services/appbar/pagesApiSlice';
-
-// const pages_ = [
-// 	{
-// 		menuTitle: 'Home',
-// 		pageURL: '/',
-// 	},
-// 	{
-// 		menuTitle: 'Cart',
-// 		pageURL: '/cart',
-// 	},
-// 	{
-// 		menuTitle: 'Counter',
-// 		pageURL: '/counter',
-// 	},
-// 	{
-// 		menuTitle: 'Dogs',
-// 		pageURL: '/dogs',
-// 	},
-// 	{
-// 		menuTitle: 'Users',
-// 		pageURL: '/users',
-// 	},
-// ];
+import { CartDrawer } from '../CartProducts/CartDrawer';
 
 const ResponsiveAppBar: FC = () => {
-	const { data = []} = useGetPagesQuery([]);
-	const anchorElNav = useAppSelector(state => state.appBar.anchorElNav);
-	const showCart = useAppSelector(state => state.appBar.showCart);
+	const { data = [] } = useGetPagesQuery([]);
+	const anchorElNav = useAppSelector((state) => state.appBar.anchorElNav);
+	const showCart = useAppSelector((state) => state.appBar.showCart);
 	const cart = useAppSelector((state) => state.cart);
-	const dispatch = useDispatch()
-
+	const dispatch = useDispatch();
 
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-		dispatch(setAnchorElNav(event.currentTarget))
+		dispatch(setAnchorElNav(event.currentTarget));
 	};
 
 	const handleCloseNavMenu = () => {
@@ -173,7 +152,9 @@ const ResponsiveAppBar: FC = () => {
 						})}
 					</Box>
 					<Badge badgeContent={cart.cartItems.length} color="secondary">
-						<ShoppingCartCheckoutOutlined onClick={() => dispatch(setShowCart(true))} />
+						<ShoppingCartCheckoutOutlined
+							onClick={() => dispatch(setShowCart(true))}
+						/>
 						<CartDrawer
 							key={cart.cartItems.length}
 							open={showCart}

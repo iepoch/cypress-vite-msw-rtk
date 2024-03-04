@@ -1,12 +1,12 @@
 import { combineSlices, configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/query';
+import appBarReducer from '../services/appbar/appbar-slice';
+import { pagesApiSlice } from '../services/appbar/pagesApiSlice';
 import counterReducer from '../services/counter/counter-slice';
 import { dogsApiSlice } from '../services/dogs/dogApiSlice';
 import cartReducer from '../services/products/cartSlice';
 import { productsApiSlice } from '../services/products/productsApiSlice';
-import {pagesApiSlice} from '../services/appbar/pagesApiSlice';
 import { usersApiSlice } from '../services/users/usersApiSlice';
-import appBarReducer from '../services/appbar/appbar-slice';
 
 const rootReducer = combineSlices(
 	usersApiSlice,

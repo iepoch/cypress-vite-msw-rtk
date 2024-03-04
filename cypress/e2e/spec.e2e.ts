@@ -28,6 +28,20 @@ describe('Difference between E2E Test -', () => {
         cy.findByText('Clear Count').click();
         cy.findByText(`Count is: ${0}`).should('have.text', `Count is: ${0}`);
       });
+      
+     it('Add And Remove Cart', () => {
+
+        cy.visit('/cart');
+        cy.findAllByText('Add to Cart').first().click();
+        cy.findByText('1').should('exist')
+        cy.findByTestId('ShoppingCartCheckoutOutlinedIcon').first().click()
+        cy.findAllByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops').should('exist')
+        cy.findByText('Clear the cart').click()
+        cy.findAllByText('No Items in cart').should('exist')
+        cy.get('body').click(0,0)
+        cy.findByText('1').should('not.exist')
+      });
+
 
       it('Dogs are rendered and 1 Dog Found', () => {
         cy.visit('/dogs');
