@@ -5,7 +5,7 @@ import { worker } from '../../src/mocks/browser';
 import { mount, MountOptions, MountReturn } from 'cypress/react18';
 import { MemoryRouterProps } from 'react-router-dom';
 import { EnhancedStore } from '@reduxjs/toolkit';
-import { RootState } from '@reduxjs/toolkit/query';
+import { RootState } from '../../src/app/store';
 
 Cypress.on('test:before:run:async', async () => {
   await worker.start({
@@ -59,6 +59,6 @@ declare global {
 // eslint-disable-next-line no-undef
 Cypress.Commands.add('mount', mount);
 
-Cypress.on('uncaught:exception', (err, runnable) => {
+Cypress.on('uncaught:exception', () => {
   return false;
 });
