@@ -4,11 +4,6 @@ import { UsersList } from './UsersList';
 
 export const Users = () => {
 	const { data = [] } = useGetUsersQuery([]);
-	// const theme = {
-	// 	width: 140,
-	// 	padding: '12px 6px'
-	// }
-
 	return (
 		<Box
 			component="main"

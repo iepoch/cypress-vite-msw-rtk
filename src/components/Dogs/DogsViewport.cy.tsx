@@ -1,6 +1,12 @@
 import { Dogs } from './Dogs';
+import { ViewportResolution } from "../types";
+
+const sizes = Cypress.env('viewports') as ViewportResolution[];
+
 
 describe('<Dogs /> Component Testing', () => {
+    sizes.forEach(({ width, height }: ViewportResolution) => {
+        context(`Responsive Site Size ${width} x ${height} - `, () => {
 	beforeEach(() => {
 		cy.mountComponent(<Dogs />);
 	});
@@ -104,14 +110,15 @@ describe('<Dogs /> Component Testing', () => {
                 return new Cypress.Promise((resolve) => {
                   resolve('Success');
                 });
-              }
-              return rowSearch(++rowIndex, length, pageLength);
+            }
+            return rowSearch(++rowIndex, length, pageLength);
             });
         };
         cy.get('.MuiTableBody-root').then(($pageList) => {
-          cy.log('Page List', $pageList.length);
-          return findInPage($pageList.length);
+            cy.log('Page List', $pageList.length);
+            return findInPage($pageList.length);
         });
-      });
-
+    });
+        });
+    });
 });
