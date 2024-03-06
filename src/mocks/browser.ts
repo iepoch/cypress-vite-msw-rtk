@@ -8,6 +8,5 @@ export const scenarioName = new URLSearchParams(window.location.search).get(
 	'scenario',
 );
 
-
 export const runtimeScenarios = scenarios[scenarioName] || [];
 export const worker = setupWorker(...runtimeScenarios, ...handlers);

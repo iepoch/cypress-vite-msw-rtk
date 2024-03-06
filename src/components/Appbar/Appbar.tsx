@@ -147,9 +147,7 @@ const ResponsiveAppBar: FC = () => {
 						})}
 					</Box>
 					<Badge badgeContent={cart.cartItems.length} color="secondary">
-						<ShoppingCartCheckoutOutlined
-							onClick={() => setShowCart(true)}
-						/>
+						<ShoppingCartCheckoutOutlined onClick={() => setShowCart(true)} />
 						<CartDrawer
 							key={cart.cartItems.length}
 							open={showCart}
