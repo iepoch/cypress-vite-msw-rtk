@@ -22,9 +22,9 @@
 // export const CartContext = createContext({} as ShoppingCartContext)
 
 
-// export function useShoppingCart() {
-//     return useContext(CartContext)
-// }
+// // export function useShoppingCart() {
+// //     return useContext(CartContext)
+// // }
 
 // export  function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) { 
 //     const [cartItems, setCartItems] = useState<CartItem[]>([])

@@ -1,17 +1,11 @@
-// import React from 'react'
-// import { ShoppingCartProvider } from '../Cart/CartContext'
-// import { ProductsApiProvider } from '../CartServices/ProductContext'
+import React from 'react'
+import { ProductsProvider } from '../CartServices/ProductContext'
+import CartProducts from './CartProducts'
 
-
-
-
-// export default CartComponent  = () => { 
-// return (
-//     <ShoppingCartProvider>
-//         <ProductsApiProvider>
-//             <CartProducts />
-//         </ProductsApiProvider>
-//     </ShoppingCartProvider>
-// )
-
-// }
+export const CartComponent: React.FC = () => {
+  return (
+    <ProductsProvider>
+      <CartProducts />
+    </ProductsProvider>
+  )
+}

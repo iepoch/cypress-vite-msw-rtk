@@ -1,7 +1,6 @@
 import { createLazyFileRoute } from '@tanstack/react-router';
-import { CartProducts } from '../components/Context/CartComponent/CartProducts'
-
+import { CartComponent } from '../components/Context/CartComponent/CartComponent';
 export const Route = createLazyFileRoute('/cartContext')({
-	pendingComponent: CartProducts,
-	component: CartProducts,
+	pendingComponent: CartComponent,
+	component: CartComponent,
 });
