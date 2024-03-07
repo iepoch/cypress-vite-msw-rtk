@@ -23,5 +23,6 @@
     "cypress",
     "node",
     "./**/*", "../cypress/support/types"
-  ]
+  ], 
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

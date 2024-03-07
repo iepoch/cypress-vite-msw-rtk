@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite --port 3000",
-    "cy:open": "npx cypress open  --component --browser chrome", 
+    "cy:open": "npx cypress open  --component --browser chrome",
     "cypress": "start-server-and-test dev http://localhost:3000  'cypress open'",
     "test:component": "npx cypress run --component",
     "test": "start-server-and-test dev http://localhost:3000 'cypress run --browser  firefox:dev'",
