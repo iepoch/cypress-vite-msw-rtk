@@ -4,9 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite --port 3001",
+    "dev": "vite --port 4800",
     "cy:open": "npx cypress open  --component --browser chrome ",
-    "cypress": "start-server-and-test dev http://localhost:3001  'cypress open --browser chrome'",
+    "cypress": "start-server-and-test dev http://localhost:4800  'cypress open --browser chrome'",
     "test:component": "start-server-and-test dev http://localhost:3000 'cypress run --component --browser chrome'",
     "test": "start-server-and-test dev http://localhost:3000 'cypress run --browser  firefox:dev'",
     "format": "prettier --write src",

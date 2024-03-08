@@ -1,9 +1,4 @@
-import { CardMedia, Grid, Rating } from '@mui/material';
-import Button from '@mui/material/Button';
-import Card from '@mui/material/Card';
-import CardActions from '@mui/material/CardActions';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
+import { CardMedia, Grid, Rating, Card, CardActions, CardContent, Button, Typography } from '@mui/material';
 import { createBrowserHistory } from '@tanstack/react-router';
 import React, { FC } from 'react';
 import { useDispatch } from 'react-redux';

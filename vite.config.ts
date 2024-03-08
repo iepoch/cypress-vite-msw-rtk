@@ -5,7 +5,7 @@ import tsconfigPaths from 'vite-tsconfig-paths'
 import { TanStackRouterVite } from '@tanstack/router-vite-plugin'
 
 export default defineConfig({
-  server: {port: 3000},
+  server: {port: 4800},
   build: {
     sourcemap: true,
   },
