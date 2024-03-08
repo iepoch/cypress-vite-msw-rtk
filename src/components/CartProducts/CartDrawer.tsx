@@ -1,3 +1,4 @@
+import React, { FC, useState } from 'react'
 import { Box, Button, Divider, Sheet, Typography } from '@mui/joy';
 import { Drawer } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -9,8 +10,10 @@ type Props = {
 	onClose: (event: Event) => void;
 };
 
-export const CartDrawer = ({ open, onClose }: Props) => {
+export const CartDrawer: FC = ({ open, onClose }: Props) => {
 	const cart = useAppSelector((state) => state.cart);
+	const [cartState ] = useState(cart.cartItems)
+	
 	const dispatch = useAppDispatch();
 
 	return (
@@ -35,8 +38,8 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 				>
 					Clear the cart
 				</Button>
-				{cart.cartItems.length === 0 ? <p> No Items in cart</p> : null}
-				{cart.cartItems.map((product) => (
+				{cartState.length === 0 ? <p> No Items in cart</p> : null}
+				{cartState.map((product) => (
 					<Sheet
 						key={
 							product.id + product.price + product.rating.rate + product.title
