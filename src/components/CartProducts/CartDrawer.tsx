@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { Box, Button, Divider, Sheet, Typography } from '@mui/joy';
 import { Drawer } from '@mui/material';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -10,7 +10,7 @@ type Props = {
 	onClose: (event: Event) => void;
 };
 
-export const CartDrawer: FC = ({ open, onClose }: Props) => {
+export const CartDrawer = ({ open, onClose }: Props) => {
 	const cart = useAppSelector((state) => state.cart);
 	const [cartState ] = useState(cart.cartItems)
 	

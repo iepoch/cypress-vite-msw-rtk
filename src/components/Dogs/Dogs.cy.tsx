@@ -52,7 +52,7 @@ describe('<Dogs /> Component Testing', () => {
 				if ($button.attr('disabled') === 'disabled') {
 					cy.log('Last page!');
 					return;
-				} else {
+				}
 					return cy
 						.get(nextPageArrow)
 						.click()
@@ -61,7 +61,6 @@ describe('<Dogs /> Component Testing', () => {
 								return rowSearch(0, Number(rowLength), length);
 							});
 						});
-				}
 			});
 		};
 		const getRowLength = () => {
@@ -78,10 +77,10 @@ describe('<Dogs /> Component Testing', () => {
 			length: number,
 			pageLength: number,
 		) => {
-			if (rowIndex == length) {
-				cy.log('Row index: ' + rowIndex);
-				cy.log('length: ' + length);
-				cy.log('Page Length: ' + pageLength);
+			if (rowIndex === length) {
+				cy.log(`Row index: ${rowIndex}`);
+				cy.log(`length: ${length}`);
+				cy.log(`Page Length: ${pageLength}`);
 				return findInPage(length);
 			}
 
@@ -89,8 +88,8 @@ describe('<Dogs /> Component Testing', () => {
 				.get('tr > td:nth-child(1)')
 				.eq(rowIndex)
 				.then(($breedName) => {
-					cy.log('Row index: ' + rowIndex);
-					cy.log('Breed name: ' + $breedName.text());
+					cy.log(`Row index: ${rowIndex}`);
+					cy.log(`Breed name: ${$breedName.text()}`);
 					const breedName = $breedName.text();
 
 					if (breedName === 'Cairn Terrier') {
@@ -105,7 +104,8 @@ describe('<Dogs /> Component Testing', () => {
 							resolve('Success');
 						});
 					}
-					return rowSearch(++rowIndex, length, pageLength);
+					let rowLocalIndex = rowIndex;
+					return rowSearch(++rowLocalIndex, length, pageLength);
 				});
 		};
 		cy.get('.MuiTableBody-root').then(($pageList) => {

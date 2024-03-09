@@ -5,7 +5,7 @@ const sizes = Cypress.env('viewports') as ViewportResolution[];
 
 
 describe('Difference between E2E Test -', () => {
-  sizes.forEach(({ width, height }: ViewportResolution) => {
+  for(const {width, height} of sizes){
     context(`Responsive Site Size ${width} x ${height} - `, () => {
       beforeEach(() => {
         cy.viewport(width, height);
@@ -29,7 +29,7 @@ describe('Difference between E2E Test -', () => {
         cy.findByText(`Count is: ${0}`).should('have.text', `Count is: ${0}`);
       });
       
-     it('Add And Remove Cart', () => {
+    it('Add And Remove Cart', () => {
 
         cy.visit('/cart');
         cy.findAllByText('Add to Cart').first().click();
@@ -56,7 +56,7 @@ describe('Difference between E2E Test -', () => {
             if ($button.attr('disabled') === 'disabled') {
               cy.log('Last page!');
               return;
-            } else {
+            }
               return cy
                 .get(nextPageArrow)
                 .click()
@@ -65,7 +65,6 @@ describe('Difference between E2E Test -', () => {
                     return rowSearch(0, Number(rowLength), length);
                   });
                 });
-            }
           });
         };
         const getRowLength = () => {
@@ -82,10 +81,10 @@ describe('Difference between E2E Test -', () => {
           length: number,
           pageLength: number,
         ) => {
-          if (rowIndex == length) {
-            cy.log('Row index: ' + rowIndex);
-            cy.log('length: ' + length);
-            cy.log('Page Length: ' + pageLength);
+          if (rowIndex === length) {
+            cy.log(`Row index: ${rowIndex}`);
+            cy.log(`length: ${length}`);
+            cy.log(`Page Length: ${pageLength}`);
             return findInPage(length);
           }
 
@@ -93,8 +92,8 @@ describe('Difference between E2E Test -', () => {
             .get('tr > td:nth-child(1)')
             .eq(rowIndex)
             .then(($breedName) => {
-              cy.log('Row index: ' + rowIndex);
-              cy.log('Breed name: ' + $breedName.text());
+              cy.log(`Row index: ${rowIndex}`);
+              cy.log(`Breed name: ${$breedName.text()}`);
               const breedName = $breedName.text();
 
               if (breedName === 'Cairn Terrier') {
@@ -109,7 +108,8 @@ describe('Difference between E2E Test -', () => {
                   resolve('Success');
                 });
               }
-              return rowSearch(++rowIndex, length, pageLength);
+              let rowLocalIndex = rowIndex
+              return rowSearch(++rowLocalIndex, length, pageLength);
             });
         };
         cy.get('.MuiTableBody-root').then(($pageList) => {
@@ -119,7 +119,7 @@ describe('Difference between E2E Test -', () => {
       });
 
       it('Renders Cats instead of Dogs', () => {
-        cy.visit('http://localhost:3000/dogs?scenario=success');
+        cy.visit('http://localhost:4800/dogs?scenario=success');
         cy.get('[data-testid="number-dogs-hd"]').contains(67);
       });
 
@@ -130,5 +130,5 @@ describe('Difference between E2E Test -', () => {
         cy.findAllByText('Pinwill')
       });
     });
-  });
+  }
 });
