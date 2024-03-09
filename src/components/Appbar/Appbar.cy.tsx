@@ -19,7 +19,7 @@ describe('Render the AppBar With Routing -', () => {
 			cy.findAllByText('Counter').should('exist');
 			cy.findAllByText('Users').should(($el) => {
 				if (!Cypress.dom.isVisible($el)) {
-					throw new Error('User Menu is hidden:' + $el.text());
+					throw new Error(`User Menu is hidden:${$el.text()}`);
 				}
 				expect($el).to.be.visible;
 			});

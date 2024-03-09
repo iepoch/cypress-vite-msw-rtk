@@ -53,14 +53,14 @@ describe('<Dogs /> Component Testing', () => {
 					cy.log('Last page!');
 					return;
 				}
-					return cy
-						.get(nextPageArrow)
-						.click()
-						.then(() => {
-							return getRowLength().then((rowLength) => {
-								return rowSearch(0, Number(rowLength), length);
-							});
+				return cy
+					.get(nextPageArrow)
+					.click()
+					.then(() => {
+						return getRowLength().then((rowLength) => {
+							return rowSearch(0, Number(rowLength), length);
 						});
+					});
 			});
 		};
 		const getRowLength = () => {

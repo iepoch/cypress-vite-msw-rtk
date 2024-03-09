@@ -1,6 +1,6 @@
-import React, { useState } from 'react'
 import { Box, Button, Divider, Sheet, Typography } from '@mui/joy';
 import { Drawer } from '@mui/material';
+import React, { useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { clearCart } from '../../services/products/cartSlice';
 import { CartItems } from './CartItem';
@@ -12,8 +12,8 @@ type Props = {
 
 export const CartDrawer = ({ open, onClose }: Props) => {
 	const cart = useAppSelector((state) => state.cart);
-	const [cartState ] = useState(cart.cartItems)
-	
+	const [cartState] = useState(cart.cartItems);
+
 	const dispatch = useAppDispatch();
 
 	return (

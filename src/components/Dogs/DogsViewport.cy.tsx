@@ -4,7 +4,7 @@ import { Dogs } from './Dogs';
 const sizes = Cypress.env('viewports') as ViewportResolution[];
 
 describe('<Dogs /> Component Testing', () => {
-	for(const { width, height } of sizes) {
+	for (const { width, height } of sizes) {
 		context(`Responsive Site Size ${width} x ${height} - `, () => {
 			beforeEach(() => {
 				cy.mountComponent(<Dogs />);
@@ -58,14 +58,14 @@ describe('<Dogs /> Component Testing', () => {
 							cy.log('Last page!');
 							return;
 						}
-							return cy
-								.get(nextPageArrow)
-								.click()
-								.then(() => {
-									return getRowLength().then((rowLength) => {
-										return rowSearch(0, Number(rowLength), length);
-									});
+						return cy
+							.get(nextPageArrow)
+							.click()
+							.then(() => {
+								return getRowLength().then((rowLength) => {
+									return rowSearch(0, Number(rowLength), length);
 								});
+							});
 					});
 				};
 				const getRowLength = () => {
@@ -109,7 +109,7 @@ describe('<Dogs /> Component Testing', () => {
 									resolve('Success');
 								});
 							}
-							let rawLocalIndex = rowIndex
+							let rawLocalIndex = rowIndex;
 							return rowSearch(++rawLocalIndex, length, pageLength);
 						});
 				};

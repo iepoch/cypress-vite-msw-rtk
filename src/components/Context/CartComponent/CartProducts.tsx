@@ -7,9 +7,8 @@ import Typography from '@mui/material/Typography';
 import React, { FC, useContext } from 'react';
 import { ProductContext } from '../CartServices/ProductContext';
 
-
 const CartProducts: FC = () => {
-        const {products} = useContext(ProductContext)
+	const { products } = useContext(ProductContext);
 
 	return (
 		<Grid sx={{ flexGrow: 1 }} container spacing={2} justifyContent="center">

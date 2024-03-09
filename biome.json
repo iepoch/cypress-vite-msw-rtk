@@ -3,6 +3,9 @@
 	"organizeImports": {
 		"enabled": true
 	},
+	"files": {
+		"ignore": ["routeTree.gen.ts"]
+	},
 	"linter": {
 		"enabled": true,
 		"rules": {
@@ -11,16 +14,16 @@
 	},
 	"javascript": {
 		"formatter": {
-		  "quoteStyle": "single"
+			"quoteStyle": "single"
 		}
-	  },
+	},
 	"overrides": [
 		{
 			"javascript": {
 				"formatter": {
-				  "quoteStyle": "double"
+					"quoteStyle": "double"
 				}
-			  }
+			}
 		}
 	]
 }

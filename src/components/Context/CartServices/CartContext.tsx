@@ -21,14 +21,13 @@
 
 // export const CartContext = createContext({} as ShoppingCartContext)
 
-
 // // export function useShoppingCart() {
 // //     return useContext(CartContext)
 // // }
 
-// export  function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) { 
+// export  function ShoppingCartProvider ({ children }: ShoppingCartProviderProps) {
 //     const [cartItems, setCartItems] = useState<CartItem[]>([])
-  
+
 //     getCartQuantity = (id: number ) => {
 //         return cartItems.find(item  => item.id === id)?.cartQuantity || 0
 //     }
@@ -42,7 +41,7 @@
 //                     return { ...item, cartQuantity: item.cartQuantity + 1};
 //                 }
 //                 return item;
-            
+
 //             })
 //         })
 //     }
@@ -57,7 +56,7 @@
 //                     return { ...item, cartQuantity: item.cartQuantity - 1};
 //                 }
 //                 return item;
-            
+
 //             })
 //         })
 
