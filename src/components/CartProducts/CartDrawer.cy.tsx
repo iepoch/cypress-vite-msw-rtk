@@ -31,7 +31,7 @@ const items = [
 ];
 describe('', () => {
 	beforeEach(() => {
-		cy.viewport(900, 1280);
+		cy.viewport(1780, 1280);
 	});
 
 

@@ -1,6 +1,5 @@
-import { Box, Button, Divider, Sheet, Typography } from '@mui/joy';
-import { Drawer } from '@mui/material';
 import React from 'react';
+import { Box, Button, Drawer, Divider, Sheet, Typography } from '@mui/joy';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { clearCart } from '../../services/products/cartSlice';
 import { CartItems } from './CartItem';
@@ -28,11 +27,11 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 				sx={{ backgroundColor: 'white' }}
 			>
 				<h2>Cart</h2>
-				<Divider />
+				<Divider size={'md'}/>
 				<Button
 					sx={{ p: 3, mt: 2 }}
 					onClick={() => dispatch(clearCart())}
-					size="lg"
+					size="md"
 					variant="soft"
 				>
 					Clear the cart
@@ -45,7 +44,7 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 						}
 						color="neutral"
 						variant="plain"
-						sx={{ mt: 4, maxWidth: '90%' }}
+						sx={{ mt: 4, maxWidth: '100%' }}
 					>
 						<CartItems product={product} />
 						<Typography level="title-md" variant="soft">
