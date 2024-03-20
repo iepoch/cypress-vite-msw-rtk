@@ -1,6 +1,6 @@
 import { Box, Button, Divider, Sheet, Typography } from '@mui/joy';
 import { Drawer } from '@mui/material';
-import React, { useState } from 'react';
+import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { clearCart } from '../../services/products/cartSlice';
 import { CartItems } from './CartItem';
