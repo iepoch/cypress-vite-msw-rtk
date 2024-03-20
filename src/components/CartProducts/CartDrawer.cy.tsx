@@ -34,15 +34,21 @@ describe('', () => {
 		cy.viewport(900, 1280);
 	});
 
-	it('CartDrawer No Items - ', () => {
-		const showCart = true;
-		cy.mountComponent(<CartDrawer open={showCart} onClose={() => false} />);
-		cy.findAllByText('Clear the cart').should('exist');
-	});
 
 	it('CartDrawer', () => {
 		const showCart = true;
 		localStorage.setItem('cartItems', JSON.stringify(items));
 		cy.mountComponent(<CartDrawer open={showCart} onClose={() => false} />);
+		cy.findAllByText('Mens Cotton Jacket').should('exist');
+		cy.findAllByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops').should('exist');
+	});
+
+
+	it('CartDrawer No Items - ', () => {
+		const showCart = true;
+		cy.mountComponent(<CartDrawer open={showCart} onClose={() => false} />);
+		cy.findAllByText('Clear the cart').should('exist').click();
+		cy.findAllByText('No Items in cart').should('exist');
+		
 	});
 });

@@ -12,7 +12,6 @@ type Props = {
 
 export const CartDrawer = ({ open, onClose }: Props) => {
 	const cart = useAppSelector((state) => state.cart);
-	const [cartState] = useState(cart.cartItems);
 
 	const dispatch = useAppDispatch();
 
@@ -38,8 +37,8 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 				>
 					Clear the cart
 				</Button>
-				{cartState.length === 0 ? <p> No Items in cart</p> : null}
-				{cartState.map((product) => (
+				{cart.cartItems.length === 0 ? <p> No Items in cart</p> : null}
+				{cart.cartItems.map((product) => (
 					<Sheet
 						key={
 							product.id + product.price + product.rating.rate + product.title
