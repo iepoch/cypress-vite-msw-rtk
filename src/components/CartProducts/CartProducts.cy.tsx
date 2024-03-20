@@ -1,6 +1,9 @@
 import { CartProducts } from './CartProducts';
 
 describe('', () => {
+	beforeEach(() => {
+		cy.viewport(1780, 1280);
+	});
 	it('Cart Products is displayed', () => {
 		cy.mountComponent(<CartProducts />);
 		cy.findByText(

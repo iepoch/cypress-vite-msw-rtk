@@ -23,7 +23,7 @@
 		"@mui/joy": "^5.0.0-beta.28",
 		"@mui/material": "^5.12.2",
 		"@reduxjs/toolkit": "^2.1.0",
-		"@tanstack/react-router": "^1.15.22",
+		"@tanstack/react-router": "^1.20.5",
 		"@testing-library/user-event": "^13.5.0",
 		"dotenv": "^16.0.3",
 		"preline": "^2.0.3",

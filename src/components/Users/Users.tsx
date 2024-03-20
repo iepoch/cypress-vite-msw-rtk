@@ -45,7 +45,7 @@ export const Users = () => {
 						'--Table-headerUnderlineThickness': '1px',
 						'--TableRow-hoverBackground':
 							'var(--joy-palette-background-level1)',
-						'& tr > *:first-child': { bgcolor: 'success.softBg' },
+						'& tr > *:first-of-type': { bgcolor: 'success.softBg' },
 						'--TableCell-height': '30px',
 						'--TableCell-paddingX': '4px',
 						'--TableCell-paddingY': '4px',

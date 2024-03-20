@@ -11,16 +11,21 @@
 	},
 	{
 		"id": 3,
+		"menuTitle": "Context",
+		"pageURL": "/cartContext"
+	},
+	{
+		"id": 4,
 		"menuTitle": "Counter",
 		"pageURL": "/counter"
 	},
 	{
-		"id": 4,
+		"id": 5,
 		"menuTitle": "Dogs",
 		"pageURL": "/dogs"
 	},
 	{
-		"id": 5,
+		"id": 6,
 		"menuTitle": "Users",
 		"pageURL": "/users"
 	}
