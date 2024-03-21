@@ -5,9 +5,9 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite --port 4800",
-		"cy:open": "npx cypress open  --component --browser chrome ",
+		"cy:open": "npx cypress open  --component --browser chrome",
 		"cypress": "start-server-and-test dev http://localhost:4800  'cypress open --browser chrome'",
-		"test:component": "start-server-and-test dev http://localhost:4800 'cypress run --component --browser chrome'",
+		"test:component": "start-server-and-test dev http://localhost:4800 'cypress run --component --browser chrome --headed --spec 'src/components/CartProducts/CartDrawer.cy.tsx''",
 		"test": "start-server-and-test dev http://localhost:3000 'cypress run --browser  firefox:dev'",
 		"format": "prettier --write src",
 		"lint:fix": "biome check --apply ./src",

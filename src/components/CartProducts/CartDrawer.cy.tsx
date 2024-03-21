@@ -32,12 +32,12 @@ const items = [
 describe('', () => {
 	beforeEach(() => {
 		cy.viewport(1780, 1280);
+		window.localStorage.setItem('cartItems', JSON.stringify(items));
 	});
 
 
 	it('CartDrawer', () => {
 		const showCart = true;
-		localStorage.setItem('cartItems', JSON.stringify(items));
 		cy.mountComponent(<CartDrawer open={showCart} onClose={() => false} />);
 		cy.findAllByText('Mens Cotton Jacket').should('exist');
 		cy.findAllByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops').should('exist');

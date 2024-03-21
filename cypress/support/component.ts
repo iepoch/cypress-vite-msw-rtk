@@ -33,7 +33,9 @@ const items = [{
 		"cartQuantity": 3,
 }
 ]
+
 Cypress.on('test:before:run:async', async () => {
+  await window.localStorage.setItem('cartItems', JSON.stringify(items))
   await worker.start({
 		onUnhandledRequest: 'bypass',
   });
