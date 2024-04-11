@@ -1,44 +1,29 @@
 import { ShoppingCartCheckoutOutlined } from '@mui/icons-material';
 import AdbIcon from '@mui/icons-material/Adb';
 import MenuIcon from '@mui/icons-material/Menu';
-import { AppBar, Badge, Box, Button, Toolbar } from '@mui/material';
+import AppBar from '@mui/material/AppBar';
+import Badge from '@mui/material/Badge';
+import Box from '@mui/material/Box';
+import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from '@tanstack/react-router';
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
-import { dogsApiSlice } from '../../services/dogs/dogApiSlice';
+import { useGetPagesQuery } from '../../services/appbar/pagesApiSlice';
 import { CartDrawer } from '../CartProducts/CartDrawer';
 
-const pages_ = [
-	{
-		menuTitle: 'Home',
-		pageURL: '/',
-	},
-	{
-		menuTitle: 'Cart',
-		pageURL: '/cart',
-	},
-	{
-		menuTitle: 'Counter',
-		pageURL: '/counter',
-	},
-	{
-		menuTitle: 'Dogs',
-		pageURL: '/dogs',
-	},
-	{
-		menuTitle: 'Users',
-		pageURL: '/users',
-	},
-];
-
-const ResponsiveAppBar = () => {
+const ResponsiveAppBar: FC = () => {
+	const { data = [] } = useGetPagesQuery([]);
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
 	const [showCart, setShowCart] = useState<boolean>(false);
+
+	const cart = useAppSelector((state) => state.cart);
+
 	const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
 		setAnchorElNav(event.currentTarget);
 	};
@@ -47,11 +32,6 @@ const ResponsiveAppBar = () => {
 		setAnchorElNav(null);
 	};
 
-	const cart = useAppSelector((state) => state.cart);
-
-	const isLoading = () => {
-		dogsApiSlice.usePrefetch('fetchBreeds');
-	};
 	return (
 		<AppBar position="static" sx={{ background: 'gray', boxShadow: 'none' }}>
 			<Container maxWidth="xl">
@@ -104,16 +84,12 @@ const ResponsiveAppBar = () => {
 								display: { xs: 'block', md: 'none' },
 							}}
 						>
-							{pages_.map((page) => {
-								const { menuTitle, pageURL } = page;
+							{data.map((page) => {
+								const { id, menuTitle, pageURL } = page;
 								return (
-									<MenuItem
-										key={page.menuTitle}
-										onClick={handleCloseNavMenu}
-										onLoad={isLoading}
-									>
+									<MenuItem key={id} onClick={handleCloseNavMenu}>
 										<Typography
-											key={page.menuTitle}
+											key={id}
 											component={Link}
 											to={pageURL}
 											color="primary"
@@ -156,11 +132,11 @@ const ResponsiveAppBar = () => {
 							display: { xs: 'none', md: 'flex' },
 						}}
 					>
-						{pages_.map((page) => {
-							const { menuTitle, pageURL } = page;
+						{data.map((page) => {
+							const { id, menuTitle, pageURL } = page;
 							return (
 								<Button
-									key={page.menuTitle}
+									key={id + menuTitle}
 									component={Link}
 									to={pageURL}
 									color="inherit"

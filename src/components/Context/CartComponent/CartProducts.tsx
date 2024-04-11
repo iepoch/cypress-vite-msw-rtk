@@ -1,34 +1,21 @@
-import {
-	Button,
-	Card,
-	CardActions,
-	CardContent,
-	CardMedia,
-	Grid,
-	Rating,
-	Typography,
-} from '@mui/material';
-import { createBrowserHistory } from '@tanstack/react-router';
-import React, { FC } from 'react';
-import { useDispatch } from 'react-redux';
-import { CartItem, addToCart } from '../../services/products/cartSlice';
-import { useGetProductsQuery } from '../../services/products/productsApiSlice';
+import { CardMedia, Grid, Rating } from '@mui/material';
+import Button from '@mui/material/Button';
+import Card from '@mui/material/Card';
+import CardActions from '@mui/material/CardActions';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import React, { FC, useContext } from 'react';
+import { ProductContext } from '../CartServices/ProductContext';
 
-export const CartProducts: FC = () => {
-	const { data = [] } = useGetProductsQuery([]);
-	const dispatch = useDispatch();
-	const history = createBrowserHistory();
-	
-	const handleAddToCart = (product: CartItem) => {
-		dispatch(addToCart(product));
-		history.push('/cart');
-	};
+const CartProducts: FC = () => {
+
+	const { products } = useContext(ProductContext);
 
 	return (
 		<Grid sx={{ flexGrow: 1 }} container spacing={2} justifyContent="center">
 			<Grid item xs={12}>
 				<Grid container sx={{ justifyContent: 'space-evenly' }} spacing={2}>
-					{data.map((product) => (
+					{products.map((product) => (
 						<Card
 							key={product.id + product.rating.count + product.rating.rate}
 							sx={{
@@ -78,3 +65,4 @@ export const CartProducts: FC = () => {
 		</Grid>
 	);
 };
+export default CartProducts;

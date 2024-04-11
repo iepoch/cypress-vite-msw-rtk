@@ -15,10 +15,7 @@ export const CartItems = ({ product }: Props) => {
 	const dispatch = useDispatch();
 
 	return (
-		<Box
-			
-			sx={{ display: 'flex', flexDirection: 'column', maxHeight: 400 }}
-		>
+		<Box sx={{ display: 'flex', flexDirection: 'column', maxHeight: 400 }}>
 			<Box
 				maxHeight={200}
 				width={400}
@@ -40,7 +37,13 @@ export const CartItems = ({ product }: Props) => {
 					sx={{ alignItems: 'left', blockSize: 50 }}
 				/>
 			</Box>
-			<Box key={product.id + product.price + product.rating.rate + product.title} display="flex" alignItems="center" gap={6} p={2}>
+			<Box
+				key={product.id + product.price + product.rating.rate + product.title}
+				display="flex"
+				alignItems="center"
+				gap={6}
+				p={2}
+			>
 				<Typography level="body-sm" variant="plain">
 					Quantity
 				</Typography>

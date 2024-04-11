@@ -19,6 +19,7 @@ import { Route as rootRoute } from './routes/__root'
 const UsersLazyImport = createFileRoute('/users')()
 const DogsLazyImport = createFileRoute('/dogs')()
 const CounterLazyImport = createFileRoute('/counter')()
+const CartContextLazyImport = createFileRoute('/cartContext')()
 const CartLazyImport = createFileRoute('/cart')()
 const IndexLazyImport = createFileRoute('/')()
 
@@ -38,6 +39,11 @@ const CounterLazyRoute = CounterLazyImport.update({
   path: '/counter',
   getParentRoute: () => rootRoute,
 } as any).lazy(() => import('./routes/counter.lazy').then((d) => d.Route))
+
+const CartContextLazyRoute = CartContextLazyImport.update({
+  path: '/cartContext',
+  getParentRoute: () => rootRoute,
+} as any).lazy(() => import('./routes/cartContext.lazy').then((d) => d.Route))
 
 const CartLazyRoute = CartLazyImport.update({
   path: '/cart',
@@ -61,6 +67,10 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CartLazyImport
       parentRoute: typeof rootRoute
     }
+    '/cartContext': {
+      preLoaderRoute: typeof CartContextLazyImport
+      parentRoute: typeof rootRoute
+    }
     '/counter': {
       preLoaderRoute: typeof CounterLazyImport
       parentRoute: typeof rootRoute
@@ -81,6 +91,7 @@ declare module '@tanstack/react-router' {
 export const routeTree = rootRoute.addChildren([
   IndexLazyRoute,
   CartLazyRoute,
+  CartContextLazyRoute,
   CounterLazyRoute,
   DogsLazyRoute,
   UsersLazyRoute,

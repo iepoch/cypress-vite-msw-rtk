@@ -1,5 +1,5 @@
-import { Button, Divider, Sheet, Typography } from '@mui/joy';
-import { Drawer } from '@mui/material';
+import React from 'react';
+import { Box, Button, Drawer, Divider, Sheet, Typography } from '@mui/joy';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { clearCart } from '../../services/products/cartSlice';
 import { CartItems } from './CartItem';
@@ -11,29 +11,27 @@ type Props = {
 
 export const CartDrawer = ({ open, onClose }: Props) => {
 	const cart = useAppSelector((state) => state.cart);
+
 	const dispatch = useAppDispatch();
 
 	return (
-		<Drawer
-			open={open}
-			onClose={onClose}
-			anchor="right"
-			PaperProps={{
-				sx: {
-					width: 500,
-					backgroundColor: 'white',
-					borderRadius: 0,
-					alignItems: 'center',
-				},
-			}}
-		>
-			<>
+		<Drawer open={open} onClose={onClose} anchor="right">
+			<Box
+				width={500}
+				display="flex"
+				justifyContent="center"
+				flexDirection="column"
+				alignItems="center"
+				gap={4}
+				p={2}
+				sx={{ backgroundColor: 'white' }}
+			>
 				<h2>Cart</h2>
-				<Divider />
+				<Divider size={'md'}/>
 				<Button
 					sx={{ p: 3, mt: 2 }}
 					onClick={() => dispatch(clearCart())}
-					size="lg"
+					size="md"
 					variant="soft"
 				>
 					Clear the cart
@@ -41,19 +39,21 @@ export const CartDrawer = ({ open, onClose }: Props) => {
 				{cart.cartItems.length === 0 ? <p> No Items in cart</p> : null}
 				{cart.cartItems.map((product) => (
 					<Sheet
-					key={product.id + product.price + product.rating.rate + product.title}
+						key={
+							product.id + product.price + product.rating.rate + product.title
+						}
 						color="neutral"
 						variant="plain"
-						sx={{ mt: 1, maxWidth: '90%' }}
+						sx={{ mt: 4, maxWidth: '100%' }}
 					>
-						<CartItems product={product}/>
+						<CartItems product={product} />
 						<Typography level="title-md" variant="soft">
 							Total: ${(product.price * product.cartQuantity).toFixed(2)}
 						</Typography>
 						<Divider />
 					</Sheet>
 				))}
-			</>
+			</Box>
 		</Drawer>
 	);
 };

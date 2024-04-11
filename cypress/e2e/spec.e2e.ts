@@ -1,17 +1,11 @@
-interface ViewportResolution {
-  width: number;
-  height: number;
-  xs?: boolean;
-  sm?: boolean;
-  md?: boolean;
-  lg?: boolean;
-  xl?: boolean;
-}
+import { selectMenuOption } from "../support/utilities/menuSelections";
+import { ViewportResolution } from "../types";
 
-const sizes = Cypress.env('viewports');
+const sizes = Cypress.env('viewports') as ViewportResolution[];
+
 
 describe('Difference between E2E Test -', () => {
-  sizes.forEach(({ width, height }: ViewportResolution) => {
+  for(const {width, height} of sizes){
     context(`Responsive Site Size ${width} x ${height} - `, () => {
       beforeEach(() => {
         cy.viewport(width, height);
@@ -19,37 +13,41 @@ describe('Difference between E2E Test -', () => {
 
       it('Navigation Test', () => {
         cy.visit('/dogs');
-        const responseMenu = cy.get('.css-1lvtzne > .MuiButtonBase-root');
-        responseMenu.then(($button) => {
-          if ($button.is(':visible')) {
-            responseMenu.click({ force: true });
-            cy.get('li').contains('Home').click({ force: true }).wait(500);
-            responseMenu.click({ force: true });
-            cy.get('li').contains('Counter').click({ force: true }).wait(500);
-            responseMenu.click({ force: true });
-            cy.get('li').contains('Dogs').click({ force: true }).wait(500);
-            responseMenu.click({ force: true });
-            cy.get('li').contains('Users').click({ force: true }).wait(500);
-          } else {
-            cy.contains('Home').click();
-            cy.contains('Counter').click();
-            cy.contains('Dogs').click();
-            cy.contains('Users').click();
-          }
-        });
+
+        selectMenuOption('Home');
+        selectMenuOption('Counter');
+        selectMenuOption('Dogs');
+        selectMenuOption('Users');
       });
 
       it('Counter Counts', () => {
         cy.visit('/counter');
-        cy.get('[data-testid="counter-button"]').click();
-        cy.get('[data-testid="counter-button"]').contains(3);
+        cy.findByText(`Count is: ${0}`).click();
+        cy.findByText(`Count is: ${3}`).contains(3);
+        cy.findByText('Clear Count').should('be.visible');
+        cy.findByText('Clear Count').click();
+        cy.findByText(`Count is: ${0}`).should('have.text', `Count is: ${0}`);
       });
+      
+    it('Add And Remove Cart', () => {
+
+        cy.visit('/cart');
+        cy.findAllByText('Add to Cart').first().click();
+        cy.findByText('1').should('exist')
+        cy.findByTestId('ShoppingCartCheckoutOutlinedIcon').first().click()
+        cy.findAllByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops').should('exist')
+        cy.findByText('Clear the cart').click()
+        cy.findAllByText('No Items in cart').should('exist')
+        cy.get('body').click(0,0)
+        cy.findByText('1').should('not.exist')
+      });
+
 
       it('Dogs are rendered and 1 Dog Found', () => {
         cy.visit('/dogs');
         cy.get('[data-testid="number-dogs-hd"]').contains(90);
 
-        // We give it the data to verify that we now have the correct data comming from the server
+        // We give it the data to verify that we now have the correct data coming from the server
         // And we validate that we can find or change the data as a user can change it. Thats is end to end testing
 
         const nextPageArrow = '[aria-label="Go to next page"]';
@@ -58,7 +56,7 @@ describe('Difference between E2E Test -', () => {
             if ($button.attr('disabled') === 'disabled') {
               cy.log('Last page!');
               return;
-            } else {
+            }
               return cy
                 .get(nextPageArrow)
                 .click()
@@ -67,7 +65,6 @@ describe('Difference between E2E Test -', () => {
                     return rowSearch(0, Number(rowLength), length);
                   });
                 });
-            }
           });
         };
         const getRowLength = () => {
@@ -84,10 +81,10 @@ describe('Difference between E2E Test -', () => {
           length: number,
           pageLength: number,
         ) => {
-          if (rowIndex == length) {
-            cy.log('Row index: ' + rowIndex);
-            cy.log('length: ' + length);
-            cy.log('Page Length: ' + pageLength);
+          if (rowIndex === length) {
+            cy.log(`Row index: ${rowIndex}`);
+            cy.log(`length: ${length}`);
+            cy.log(`Page Length: ${pageLength}`);
             return findInPage(length);
           }
 
@@ -95,8 +92,8 @@ describe('Difference between E2E Test -', () => {
             .get('tr > td:nth-child(1)')
             .eq(rowIndex)
             .then(($breedName) => {
-              cy.log('Row index: ' + rowIndex);
-              cy.log('Breed name: ' + $breedName.text());
+              cy.log(`Row index: ${rowIndex}`);
+              cy.log(`Breed name: ${$breedName.text()}`);
               const breedName = $breedName.text();
 
               if (breedName === 'Cairn Terrier') {
@@ -111,7 +108,8 @@ describe('Difference between E2E Test -', () => {
                   resolve('Success');
                 });
               }
-              return rowSearch(++rowIndex, length, pageLength);
+              let rowLocalIndex = rowIndex
+              return rowSearch(++rowLocalIndex, length, pageLength);
             });
         };
         cy.get('.MuiTableBody-root').then(($pageList) => {
@@ -121,9 +119,16 @@ describe('Difference between E2E Test -', () => {
       });
 
       it('Renders Cats instead of Dogs', () => {
-        cy.visit('http://localhost:3001/dogs?scenario=success');
+        cy.visit('http://localhost:4800/dogs?scenario=success');
         cy.get('[data-testid="number-dogs-hd"]').contains(67);
       });
+
+
+      it('Renders Users', () =>{
+        cy.visit('/users');
+        cy.findAllByText('ddumbreck0@issuu.com')
+        cy.findAllByText('Pinwill')
+      });
     });
-  });
+  }
 });

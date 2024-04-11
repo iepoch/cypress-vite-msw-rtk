@@ -1,12 +1,9 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
-    "types": ["cypress", "@testing-library/cypress"],
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "types": ["node", "cypress", "@testing-library/cypress", ],
+    "typeRoots": ["./node_modules", "./node_modules/@types"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -26,5 +23,6 @@
     "cypress",
     "node",
     "./**/*", "../cypress/support/types"
-  ]
+  ], 
+  "references": [{ "path": "./tsconfig.node.json" }]
 }

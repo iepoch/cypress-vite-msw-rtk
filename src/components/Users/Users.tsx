@@ -1,13 +1,9 @@
-import Sheet from '@mui/joy/Sheet';
-import { Box } from '@mui/material';
-import { useGetUsersQuery } from '../../services/users/usersApiSlice';
+import { Box, Sheet, Table } from '@mui/joy';
+import { IUsers, useGetUsersQuery } from '../../services/users/usersApiSlice';
 import { UsersList } from './UsersList';
-
-import Table from '@mui/joy/Table';
 
 export const Users = () => {
 	const { data = [] } = useGetUsersQuery([]);
-
 	return (
 		<Box
 			component="main"
@@ -41,7 +37,7 @@ export const Users = () => {
 				}}
 			>
 				<Table
-					aria-labelledby="tableTitle"
+					aria-labelledby="UserTable"
 					stickyHeader
 					hoverRow
 					sx={{
@@ -49,7 +45,7 @@ export const Users = () => {
 						'--Table-headerUnderlineThickness': '1px',
 						'--TableRow-hoverBackground':
 							'var(--joy-palette-background-level1)',
-						'& tr > *:first-child': { bgcolor: 'success.softBg' },
+						'& tr > *:first-of-type': { bgcolor: 'success.softBg' },
 						'--TableCell-height': '30px',
 						'--TableCell-paddingX': '4px',
 						'--TableCell-paddingY': '4px',
@@ -57,13 +53,13 @@ export const Users = () => {
 				>
 					<thead>
 						<tr>
-							<th style={{ width: 140, padding: '12px 6px' }}>First Name</th>
-							<th style={{ width: 140, padding: '12px 6px' }}>Last Name</th>
-							<th style={{ width: 240, padding: '12px 6px' }}>Email</th>
+							<th>First Name</th>
+							<th>Last Name</th>
+							<th>Email</th>
 						</tr>
 					</thead>
 					<tbody>
-						{data.map((users) => (
+						{data.map((users: IUsers) => (
 							<UsersList key={users.id} users={users} />
 						))}
 					</tbody>
