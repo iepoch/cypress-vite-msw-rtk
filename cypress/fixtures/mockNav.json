@@ -1,0 +1,34 @@
+{
+    "default": [
+        {
+            "id": 1,
+            "menuTitle": "My Home",
+            "pageURL": "/"
+        },
+        {
+            "id": 2,
+            "menuTitle": "New Cart",
+            "pageURL": "/cart"
+        },
+        {
+            "id": 3,
+            "menuTitle": "Cart Context",
+            "pageURL": "/cartContext"
+        },
+        {
+            "id": 4,
+            "menuTitle": "Unter",
+            "pageURL": "/counter"
+        },
+        {
+            "id": 5,
+            "menuTitle": "Cats & Dogs",
+            "pageURL": "/dogs"
+        },
+        {
+            "id": 6,
+            "menuTitle": "Ushers",
+            "pageURL": "/users"
+        }
+    ]
+}
