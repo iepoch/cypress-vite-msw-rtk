@@ -1,10 +1,10 @@
-import { Router } from '@tanstack/react-router';
+import { createRouter } from '@tanstack/react-router';
 
 // routes
 import { Route as rootRoute } from './routes/__root';
 
-const routeTree = rootRoute.addChildren();
+const routeTree = rootRoute.children;
 
-const router = new Router({ routeTree });
+const router = createRouter({ routeTree });
 
 export default router;

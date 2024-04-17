@@ -18,7 +18,7 @@ export const CartProducts: FC = () => {
 	const { data = [] } = useGetProductsQuery([]);
 	const dispatch = useDispatch();
 	const history = createBrowserHistory();
-	
+
 	const handleAddToCart = (product: CartItem) => {
 		dispatch(addToCart(product));
 		history.push('/cart');
