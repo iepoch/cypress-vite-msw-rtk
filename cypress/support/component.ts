@@ -35,14 +35,14 @@ const items = [{
 ]
 
 Cypress.on('test:before:run:async', async () => {
-  await window.localStorage.setItem('cartItems', JSON.stringify(items))
+  // await window.localStorage.setItem('cartItems', JSON.stringify(items))
   await worker.start({
 		onUnhandledRequest: 'bypass',
   });
 });
 
 Cypress.on('test:before:spec:async', async () => {
-  await localStorage.setItem('cartItems', JSON.stringify(items))
+  // await localStorage.setItem('cartItems', JSON.stringify(items))
 });
 
 

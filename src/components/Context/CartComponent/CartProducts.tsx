@@ -8,7 +8,6 @@ import React, { FC, useContext } from 'react';
 import { ProductContext } from '../CartServices/ProductContext';
 
 const CartProducts: FC = () => {
-
 	const { products } = useContext(ProductContext);
 
 	return (

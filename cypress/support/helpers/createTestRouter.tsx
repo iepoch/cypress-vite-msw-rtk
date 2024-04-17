@@ -1,17 +1,17 @@
-import { Outlet, RootRoute, Route, Router, createMemoryHistory } from '@tanstack/react-router';
+import { Outlet, createRootRoute, createRoute , createRouter , createMemoryHistory, Router } from '@tanstack/react-router';
 
-export default function createTestRouter(component: JSX.Element): Router {
+export default function createTestRouter(component: React.ReactNode): Router {
   // Create a root route
-  const rootRoute = new RootRoute({ component: Outlet });
+  const rootRoute = createRootRoute({ component: Outlet });
 
   // Create a index route
-  const indexRoute = new Route({ component: () => component, getParentRoute: () => rootRoute, path: '/' });
+  const indexRoute = createRoute({ component: () => component, getParentRoute: () => rootRoute, path: '/' });
 
   // create route tree
   const routeTree = rootRoute.addChildren([indexRoute]);
 
   // Create the router using your route tree
-  const router = new Router({ history: createMemoryHistory(), routeTree });
+  const router = createRouter({ history: createMemoryHistory(), routeTree });
 
   return router;
 }

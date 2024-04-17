@@ -13,7 +13,11 @@ Cypress.Commands.add('mountComponent', (testComponent: React.ReactNode) => {
            {testComponent}
        </MountProvider>  
     );
-  
+    
+  if (!React.isValidElement(component)) {
+    throw new Error('testComponent must be a valid React element');
+  }
+
     cy.mount(component);
   });
 
@@ -42,8 +46,8 @@ Cypress.Commands.add('mountComponent', (testComponent: React.ReactNode) => {
     return cy.mount(wrapped, mountOptions)
   })
 
-  Cypress.Commands.add('mountWithRouter', (component) =>{
-      const router = component ? createTestRouter(component) : appRouter;
+  Cypress.Commands.add('mountWithRouter', (testComponent: React.ReactNode) =>{
+      const router = testComponent ? createTestRouter(testComponent) : appRouter;
       const wrapped = <Provider store={store}><RouterProvider router={router} /></Provider>;
   
     return cy.mount(wrapped)
