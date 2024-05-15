@@ -8,5 +8,9 @@ export const handlers: RequestHandler[] = [
 	}),
 	http.get('/api/pages', () => {
 		return HttpResponse.json(pages);
-	}),
+	}),  
+
+	http.get('/api/cart-data', () => {
+		return HttpResponse.json(pages);
+	})
 ];
