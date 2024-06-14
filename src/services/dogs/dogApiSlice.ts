@@ -19,15 +19,19 @@ export const dogsApiSlice = createApi({
 			return headers;
 		},
 	}),
+	keepUnusedDataFor: 30,
+	tagTypes: ["Get"],
+	refetchOnMountOrArgChange: true,
 	endpoints(builder) {
 		return {
 			fetchBreeds: builder.query<Breed[], number>({
 				query(limit = 172) {
 					return `/breeds?limit=${limit}`;
 				},
+				keepUnusedDataFor: 5,
 			}),
 		};
 	},
 });
 
-export const { useFetchBreedsQuery } = dogsApiSlice;
+export const {useFetchBreedsQuery, useLazyFetchBreedsQuery } = dogsApiSlice;

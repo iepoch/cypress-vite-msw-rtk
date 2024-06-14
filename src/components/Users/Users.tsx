@@ -1,5 +1,8 @@
 import { Box, Sheet, Table } from '@mui/joy';
-import { IUsers, useGetUsersQuery } from '../../services/users/usersApiSlice';
+import {
+	type IUsers,
+	useGetUsersQuery,
+} from '../../services/users/usersApiSlice';
 import { UsersList } from './UsersList';
 
 export const Users = () => {

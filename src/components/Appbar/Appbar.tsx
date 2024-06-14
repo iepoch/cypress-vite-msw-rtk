@@ -12,11 +12,10 @@ import MenuItem from '@mui/material/MenuItem';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import { Link } from '@tanstack/react-router';
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import { useAppSelector } from '../../app/hooks';
 import { useGetPagesQuery } from '../../services/appbar/pagesApiSlice';
 import { CartDrawer } from '../CartProducts/CartDrawer';
-
 const ResponsiveAppBar: FC = () => {
 	const { data = [] } = useGetPagesQuery([]);
 	const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
@@ -31,6 +30,11 @@ const ResponsiveAppBar: FC = () => {
 	const handleCloseNavMenu = () => {
 		setAnchorElNav(null);
 	};
+
+	useEffect(()=> {
+		//run side effect
+		data
+	}, [data])
 
 	return (
 		<AppBar position="static" sx={{ background: 'gray', boxShadow: 'none' }}>
@@ -140,6 +144,7 @@ const ResponsiveAppBar: FC = () => {
 									component={Link}
 									to={pageURL}
 									color="inherit"
+									onClick={() => {}}
 								>
 									{menuTitle}
 								</Button>

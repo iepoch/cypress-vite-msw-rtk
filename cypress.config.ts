@@ -35,7 +35,7 @@ export default defineConfig({
         bundler: "vite",
       },
       setupNodeEvents(on) {
-        on('before:browser:launch', (browser={}, launchOptions) => {
+        on('before:browser:launch', (browser, launchOptions) => {
           if (browser.family === 'chromium') {
             launchOptions.args.push('--test-third-party-cookie-phaseout');
             return launchOptions;
