@@ -5,7 +5,7 @@
 	"type": "module",
 	"scripts": {
 		"dev": "vite --port 3000",
-		"cy:open": "npx cypress open  --component --browser chrome",
+		"cy:open": "npx cypress open --browser chrome",
 		"cypress": "start-server-and-test dev http://localhost:4800  'cypress open --browser chrome'",
 		"test:component": "start-server-and-test dev http://localhost:4800 'cypress run --component --browser chrome --headed --spec 'src/components/CartProducts/CartDrawer.cy.tsx''",
 		"test": "start-server-and-test dev http://localhost:3000 'cypress run --browser  firefox:dev'",
@@ -25,6 +25,7 @@
 		"@reduxjs/toolkit": "^2.2.5",
 		"@tanstack/react-router": "^1.28.4",
 		"@testing-library/user-event": "^13.5.0",
+		"cypress-visual-regression": "^5.0.2",
 		"dotenv": "^16.0.3",
 		"preline": "^2.0.3",
 		"react": "^18.2.0",

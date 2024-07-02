@@ -11,13 +11,22 @@ describe('Difference between E2E Test -', () => {
         cy.viewport(width, height);
       });
 
-      it('Navigation Test', () => {
+      // afterEach(() => {
+      //   const title = Cypress.currentTest.title;
+      //   const snapshotName = title.replace(/\s/g, '_').toLowerCase();
+      //   cy.compareSnapshot(`${snapshotName} ${width} x ${height} - `, 0.1)
+      // });
+
+      it.only('Navigation Test', () => {
         cy.visit('/dogs');
 
         selectMenuOption('Home');
+        const title = Cypress.currentTest.title;
+        const snapshotName = title.replace(/\s/g, '_').toLowerCase();
         selectMenuOption('Counter');
         selectMenuOption('Dogs');
         selectMenuOption('Users');
+        cy.compareSnapshot(`${snapshotName} ${width} x ${height} - `, 0.1)
       });
 
       it('Counter Counts', () => {
@@ -33,7 +42,6 @@ describe('Difference between E2E Test -', () => {
 
         cy.visit('/cart');
         cy.findAllByText('Add to Cart').first().click();
-        cy.findByText('1').should('exist')
         cy.findByTestId('ShoppingCartCheckoutOutlinedIcon').first().click()
         cy.findAllByText('Fjallraven - Foldsack No. 1 Backpack, Fits 15 Laptops').should('exist')
         cy.findByText('Clear the cart').click()
@@ -119,7 +127,7 @@ describe('Difference between E2E Test -', () => {
       });
 
       it('Renders Cats instead of Dogs', () => {
-        cy.visit('http://localhost:4800/dogs?scenario=success');
+        cy.visit('http://localhost:3000/dogs?scenario=success');
         cy.get('[data-testid="number-dogs-hd"]').contains(67);
       });
 

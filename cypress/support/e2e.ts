@@ -1,5 +1,9 @@
 import './commands';
 import { worker } from '../../src/mocks/browser';
+import { addCompareSnapshotCommand } from 'cypress-visual-regression/dist/command'
+addCompareSnapshotCommand({
+  capture: 'fullPage'
+})
 
 before(() => {
   worker.start({
