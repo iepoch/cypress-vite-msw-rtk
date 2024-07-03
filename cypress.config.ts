@@ -9,7 +9,6 @@ export default defineConfig({
     openMode: 0,
   },
   screenshotOnRunFailure: false,
-  experimentalSingleTabRunMode: true,
   experimentalModifyObstructiveThirdPartyCode: true,
   e2e: {
     baseUrl: 'http://localhost:4800',
@@ -20,7 +19,7 @@ export default defineConfig({
         vitePreprocessor(path.resolve(__dirname, './vite.config.ts')),
         )
 
-        on('before:browser:launch', (browser={}, launchOptions) => {
+        on('before:browser:launch', (browser, launchOptions) => {
           if (browser.family === 'chromium') {
             launchOptions.args.push('--test-third-party-cookie-phaseout');
             return launchOptions;
@@ -35,7 +34,7 @@ export default defineConfig({
         bundler: "vite",
       },
       setupNodeEvents(on) {
-        on('before:browser:launch', (browser={}, launchOptions) => {
+        on('before:browser:launch', (browser, launchOptions) => {
           if (browser.family === 'chromium') {
             launchOptions.args.push('--test-third-party-cookie-phaseout');
             return launchOptions;
