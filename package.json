@@ -4,6 +4,7 @@
 	"version": "0.0.0",
 	"type": "module",
 	"scripts": {
+		"start": "vite",
 		"dev": "vite --port 4800",
 		"cy:open": "npx cypress open  --component --browser chrome",
 		"cypress": "start-server-and-test dev http://localhost:4800  'cypress open --browser chrome'",
